@@ -1,14 +1,26 @@
 import React, { Component } from 'react';
 import ChartistGraph from 'react-chartist'; //import charts
 import { Grid, Row, Col } from 'react-bootstrap';
-
-
-// import {Card} from 'components/Card/Card.js';
+import Card from 'components/Card/Card.js';
+import Jumbotron from 'Components/Jumbotron';
 // import {StatsCard} from 'components/StatsCard/StatsCard.jsx';
 // import {Tasks} from 'components/Tasks/Tasks.jsx';
 
 
 class Dashboard extends Component {
+
+    render() {
+        return (
+            <div>    
+                <Cards>
+                </Cards>
+                
+                <Jumbotron>
+                </Jumbotron>
+            </div>    
+        )
+    }
+
     // createLegend(json){
     //     var legend = [];
     //     for(var i = 0; i < json["names"].length; i++){
