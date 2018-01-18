@@ -3,27 +3,11 @@ import React from "react";
 const Cards = () =>
 
     <div className="card">
-        <div className="content">
-            <Row>
-                <Col xs={5}>
-                    <div className="icon-big text-center icon-warning">
-
-                    </div>
-                </Col>
-                <Col xs={7}>
-                    <div className="numbers">
-                        <p></p>
-
-                    </div>
-                </Col>
-            </Row>
-            <div className="footer">
-                <hr />
-                <div className="stats">
-
-                </div>
-            </div>
+        <div className="card-block">
+            <h4 className="card-title">Card Title</h4>
+            <hr/>
+    		<h6 className="card-subtitle mb-2 text-muted">Card Content</h6>
         </div>
     </div>
-
+   
 export default Cards;
