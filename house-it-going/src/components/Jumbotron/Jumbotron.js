@@ -1,16 +1,9 @@
 import React from "react";
 
-const Jumbotron = props => (
-	<Jumbotron>
-		<h1>Hello, world!</h1>
-		<p>
-			This is a simple hero unit, a simple jumbotron-style component for calling
-			extra attention to featured content or information.
-		</p>
-		<p>
-			<Button bsStyle="primary">Learn more</Button>
-		</p>
-	</Jumbotron>
-);
+const Jumbotron = () =>
+  <div style={{ background: 'url(./img/hola.png)', backgroundSize: 'cover', height: 630 }} className="jumbotron jumbotron-fluid">
+  	<div className="container-fluid">
+  	</div>
+  </div>;
 
 export default Jumbotron;
