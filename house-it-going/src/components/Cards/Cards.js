@@ -1,14 +1,26 @@
-import React from "react";
+import React from 'react'
+import { Card } from 'semantic-ui-react'
 
-const Cards = () =>
+const items = [
+  {
+    header: 'Project Report - April',
+    description: 'Leverage agile frameworks to provide a robust synopsis for high level overviews.',
+    meta: 'ROI: 30%',
+  },
+  {
+    header: 'Project Report - May',
+    description: 'Bring to the table win-win survival strategies to ensure proactive domination.',
+    meta: 'ROI: 34%',
+  },
+  {
+    header: 'Project Report - June',
+    description: 'Capitalise on low hanging fruit to identify a ballpark value added activity to beta test.',
+    meta: 'ROI: 27%',
+  },
+]
 
-    <div className="card text-center">
-        <div className="card-header">
-            <h4 className="card-title">Card Title</h4>
-        </div>
-        <div className="card-block">
-    		<h6 className="card-title">Card Content</h6>
-        </div>
-    </div>
-   
-export default Cards;
+const Cards = () => (
+  <Card.Group items={items} />
+)
+
+export default Cards
