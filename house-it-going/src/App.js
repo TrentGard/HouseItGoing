@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Security, ImplicitCallback } from '@okta/okta-react';
 import Home from './components/Home';
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+// import {Container} from "./components/Grid";
 import Dashboard from "./pages/Dashboard";
 import UserProfile from "./pages/UserProfile";
 
@@ -17,22 +18,23 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <Nav/>
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            <Route exact path="/dash" component={Dashboard} />
-            <Route exact path="/login" component={UserProfile} />
-          </Switch>
           <Security issuer={config.issuer}
                     client_id={config.client_id}
                     redirect_uri={config.redirect_uri}
           >
-            <Route path='/' exact={true} component={Home}/>
-            <Route path='/implicit/callback' component={ImplicitCallback}/>
-          </Security> 
-          <Footer />         
-        </div>       
+
+            <Nav />
+
+            <div>
+              <Route path='/' exact={true} component={Home}/>
+              <Route path='/implicit/callback' component={ImplicitCallback}/>            
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/dash" component={Dashboard} />
+              <Route exact path="/login" component={UserProfile} />
+            </div>
+
+            <Footer />
+          </Security>          
       </Router>
     );
   }
