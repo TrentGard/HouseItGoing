@@ -7,23 +7,21 @@ import { Col, Row, Container } from "../../components/Grid";
 class Dashboard extends Component {
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-12">
-            <Jumbotron />
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-3">
-            <Cards />
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-6 sm-12">
-            <Table />
-          </Col>
-        </Row>          
-      </Container>
+      <div>
+        <Jumbotron />
+        <Container fluid>
+          <Row>
+            <Col size="md-3">
+              <Cards />
+            </Col>
+          </Row>
+          <Row>
+            <Col size="md-6 sm-12">
+              <Table />
+            </Col>
+          </Row>          
+        </Container>
+      </div>  
     );
   }
 }

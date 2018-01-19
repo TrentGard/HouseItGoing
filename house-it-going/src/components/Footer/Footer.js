@@ -4,7 +4,7 @@ import "./Footer.css";
 const Footer = () => (
   <footer className="footer">
     <div className="bottom">
-      Contact Your Local Rep! <img alt="react" src="" />
+    	<img alt="City Hall" src="./img/govt-graphic.png" /> Contact Your Local Rep!
     </div>
   </footer>
 );
