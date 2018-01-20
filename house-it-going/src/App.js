@@ -25,6 +25,7 @@ class App extends Component {
           >
             <div>
               <Route path='/' exact={true} component={Home}/>
+              <Route path='/dash' exact={true} component={Home}/>
               <Route path='/implicit/callback' component={ImplicitCallback}/>   
             </div>
 
