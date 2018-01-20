@@ -8,7 +8,6 @@ import Footer from "./components/Footer";
 // import {Container} from "./components/Grid";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
-import UserProfile from "./pages/UserProfile";
 
 const config = {
   issuer: 'https://dev-478651.oktapreview.com/oauth2/default',
@@ -24,7 +23,7 @@ class App extends Component {
                     client_id={config.client_id}
                     redirect_uri={config.redirect_uri}
           >
-
+          
             <Nav />
 
             <div style={{height: '100px', width: '100%'}}>
@@ -32,11 +31,13 @@ class App extends Component {
 
             <div>
               <Route path='/' exact={true} component={Home}/>
-              <Route path='/implicit/callback' component={ImplicitCallback}/>            
+              <Route path='/dash' exact={true} component={Home}/>
+              <Route path='/implicit/callback' component={ImplicitCallback}/> 
               <Route exact path="/" component={HomePage} />
               <Route exact path="/dash" component={Dashboard} />
               <Route exact path="/login" component={UserProfile} />
               <Route exact path="/questionnaire" component={Questionnaire} />
+
             </div>
 
             <Footer />
@@ -47,3 +48,4 @@ class App extends Component {
 }
 
 export default App;
+

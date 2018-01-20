@@ -1,5 +1,17 @@
 import React, { Component } from 'react';
 import { withAuth } from '@okta/okta-react';
+import styled from 'styled-components';
+
+const Button = styled.div`
+  background-color: white; 
+  color: black; 
+  border: 2px solid #008CBA;
+
+  &:hover {
+    background-color: #008CBA;
+    color: white;
+  }
+  `;
 
 export default withAuth(class Home extends Component {
   constructor(props) {
@@ -23,7 +35,7 @@ export default withAuth(class Home extends Component {
   render() {
     if (this.state.authenticated === null) return null;
     return this.state.authenticated ?
-      <button onClick={this.props.auth.logout}>Logout</button> :
-      <button onClick={this.props.auth.login}>Login</button>;
+      <Button className="loginButton" onClick={this.props.auth.logout}>Logout</Button> :
+      <Button className="loginButton" onClick={this.props.auth.login}>Login</Button>;
   }
 });
