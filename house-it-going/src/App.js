@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
 
+
 const config = {
   issuer: 'https://dev-478651.oktapreview.com/oauth2/default',
   redirect_uri: window.location.origin + '/implicit/callback',
@@ -22,12 +23,14 @@ class App extends Component {
                     client_id={config.client_id}
                     redirect_uri={config.redirect_uri}
           >
-
-            <Nav />
-
             <div>
               <Route path='/' exact={true} component={Home}/>
-              <Route path='/implicit/callback' component={ImplicitCallback}/>            
+              <Route path='/implicit/callback' component={ImplicitCallback}/>   
+            </div>
+
+            <Nav />
+        
+            <div>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/dash" component={Dashboard} />
             </div>
