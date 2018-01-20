@@ -1,0 +1,10 @@
+
+.jumbotron {
+	background: center;
+	background-size: 'cover';
+	min-height: 600px;
+	margin:0; 
+	padding-top: 50px;
+	-webkit-filter: grayscale(100%);
+    filter: grayscale(20%);
+}

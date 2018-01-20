@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Jumbotron from "../../components/Jumbotron";
+// import Jumbotron from "../../components/Jumbotron";
 import Cards from '../../components/Cards';
 import Table from "../../components/Table";
 import { Col, Row, Container } from "../../components/Grid";
@@ -7,17 +7,16 @@ import { Col, Row, Container } from "../../components/Grid";
 class Dashboard extends Component {
   render() {
     return (
-      <div>
-        <Jumbotron />
-        <Container fluid>
+      <div >
+        <Container fluid style={{marginBottom:'50'}}>
           <Row>
-            <Col size="md-3">
-              <Cards />
+            <Col size="md-12">
+              <Table />
             </Col>
           </Row>
           <Row>
-            <Col size="md-6 sm-12">
-              <Table />
+            <Col size="md-4 sm-12">
+              <Cards />
             </Col>
           </Row>          
         </Container>

@@ -1,6 +1,10 @@
+.body {
+  margin-bottom: 50px;
+
+}
+
 .footer {
-  background: 
-  #1d3659;
+  background: #1d3659;
   height: 50px;
   position: relative;
   color: white;

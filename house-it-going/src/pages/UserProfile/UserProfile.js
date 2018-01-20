@@ -1,17 +1,27 @@
 import React, { Component } from 'react';
-
-// import {Card} from 'components/Card/Card.jsx';
-// import {FormInputs} from 'components/FormInputs/FormInputs.jsx';
-// import {UserCard} from 'components/UserCard/UserCard.jsx';
-// import Button from 'elements/CustomButton/CustomButton.jsx';
-import Footer from '../../components/Footer';
+import Table from "../../components/Table";
+import { Col, Row, Container } from "../../components/Grid";
 
 class UserProfile extends Component {
     render() {
         return (
-            <Footer />
-        );
-    }
+	      <div>
+
+	        <Container fluid>
+	          <Row>
+	            <Col size="md-3">
+	              
+	            </Col>
+	          </Row>
+	          <Row>
+	            <Col size="md-6 sm-12">
+	              <Table />
+	            </Col>
+	          </Row>          
+	        </Container>
+	      </div>  
+    );
+  }
 }
 
 export default UserProfile;
