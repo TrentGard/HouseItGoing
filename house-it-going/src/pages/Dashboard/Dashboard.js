@@ -8,7 +8,7 @@ import API from "../../utils/API";
 
 class Dashboard extends Component {
   state = {
-        result: {},
+        results: {},
         zipCode: "",
         mfi: ""
     };
@@ -22,6 +22,16 @@ class Dashboard extends Component {
         .then(res => console.log(res))
         .catch(err => console.log(err));
 
+    }
+
+    findListings(zipcode) {
+      API.search(zipCode).then(function (res){
+        this.setState({
+          result: res.data
+        }).catch(function (err){
+          console.log(err)
+        })
+      })
     }
 
     // Access data points on returned JSON from COA API 
