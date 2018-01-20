@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 // import {Container} from "./components/Grid";
+import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
 import UserProfile from "./pages/UserProfile";
 
@@ -28,7 +29,7 @@ class App extends Component {
             <div>
               <Route path='/' exact={true} component={Home}/>
               <Route path='/implicit/callback' component={ImplicitCallback}/>            
-              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/" component={HomePage} />
               <Route exact path="/dash" component={Dashboard} />
               <Route exact path="/login" component={UserProfile} />
             </div>
