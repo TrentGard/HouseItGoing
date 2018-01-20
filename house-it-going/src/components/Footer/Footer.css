@@ -1,6 +1,15 @@
+.body {
+  margin-bottom: 50px;
+
+}
+
 .footer {
+<<<<<<< HEAD
   background: 
   #1d3659;
+=======
+  background: #1d3659;
+>>>>>>> 09a84225fae63edfcf3ff94ad2b020d47aa60c92
   height: 50px;
   position: relative;
   color: white;
