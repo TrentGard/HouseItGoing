@@ -22,12 +22,14 @@ class App extends Component {
                     client_id={config.client_id}
                     redirect_uri={config.redirect_uri}
           >
+            <div>
+              <Route path='/' exact={true} component={Home}/>
+              <Route path='/implicit/callback' component={ImplicitCallback}/>   
+            </div>
 
             <Nav />
 
-            <div>
-              <Route path='/' exact={true} component={Home}/>
-              <Route path='/implicit/callback' component={ImplicitCallback}/>            
+            <div>      
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/dash" component={Dashboard} />
               <Route exact path="/login" component={UserProfile} />
