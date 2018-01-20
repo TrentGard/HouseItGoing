@@ -1,20 +1,20 @@
 import React, { Component } from "react";
 // import Jumbotron from "../../components/Jumbotron";
 import Cards from '../../components/Cards';
-import Table from "../../components/Table";
+import {TablePadded, TableItem} from "../../components/Table/";
 import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 
 
 class Dashboard extends Component {
   state = {
-        result: {},
+        results: [],
         zipCode: "",
         mfi: ""
     };
 
     componentDidMount() {
-        this.searchListings("78722")
+        this.renderListings("78722")
     }
 
     searchListings(zipCode) {
@@ -22,6 +22,12 @@ class Dashboard extends Component {
         .then(res => console.log(res))
         .catch(err => console.log(err));
 
+    }
+
+    renderListings(zipCode) {
+      API.search(zipCode)
+      .then(res => this.setState({ results: res.data }))
+      .catch(err => console.log(err))
     }
 
     // Access data points on returned JSON from COA API 
@@ -35,10 +41,21 @@ class Dashboard extends Component {
   render() {
     return (
       <div >
-        <Container fluid style={{marginBottom:'50'}}>
+        <Container fluid>
           <Row>
             <Col size="md-12">
-              <Table />
+              <TablePadded>
+              {this.state.results.map(results => {
+                return (
+                  <TableItem
+                    key={results.project_id}
+                    address={results.address}
+                    zip={results.zip_code}
+                    councilDistrict={results.council_district}
+                  />
+                );
+              })};
+              </TablePadded>
             </Col>
           </Row>
           <Row>

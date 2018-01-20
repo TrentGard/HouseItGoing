@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 // import {Container} from "./components/Grid";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
-import UserProfile from "./pages/UserProfile";
 
 const config = {
   issuer: 'https://dev-478651.oktapreview.com/oauth2/default',
@@ -31,7 +30,6 @@ class App extends Component {
               <Route path='/implicit/callback' component={ImplicitCallback}/>            
               <Route exact path="/" component={HomePage} />
               <Route exact path="/dash" component={Dashboard} />
-              <Route exact path="/login" component={UserProfile} />
             </div>
 
             <Footer />
