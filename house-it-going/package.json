@@ -12,7 +12,8 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.0.17",
     "semantic-ui-react": "^0.77.2",
-    "sequelize": "^4.31.2"
+    "sequelize": "^4.31.2",
+    "styled-components": "^2.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
