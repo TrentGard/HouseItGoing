@@ -2,9 +2,18 @@
 .jumbotron {
 	background: center;
 	background-size: 'cover';
+	clear: 'both';
 	min-height: 600px;
 	margin:0; 
 	padding-top: 50px;
 	-webkit-filter: grayscale(100%);
     filter: grayscale(20%);
+}
+
+h1 {
+	color: white;
+}
+
+.search-body {
+	text-align: center;
 }

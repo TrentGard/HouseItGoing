@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 // import {Container} from "./components/Grid";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
-import UserProfile from "./pages/UserProfile";
 
 
 const config = {
@@ -34,7 +33,6 @@ class App extends Component {
             <div>
               <Route exact path="/" component={HomePage} />
               <Route exact path="/dash" component={Dashboard} />
-              <Route exact path="/login" component={UserProfile} />
             </div>
 
             <Footer />
