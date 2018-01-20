@@ -1,6 +1,14 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export const AnnualIncome = props => {
+class AnnualIncome extends Component {
+
+	constructor(props) {
+
+		super(props);
+
+	}
+
+	render() {
 
 		return (
 
@@ -8,7 +16,8 @@ export const AnnualIncome = props => {
 			
 			Choose your annual income:
 
-				<select name="annualIncome" value={props.value} onChange={props.handleInputChange}>
+
+				<select name="annualIncome" value={this.props.value} onChange={this.props.handleInputChange}>
 
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -24,4 +33,7 @@ export const AnnualIncome = props => {
 			</label>
 	
 		);
+	};
 };
+
+export default AnnualIncome;

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class HouseholdSize extends Component {
+class ZipCode extends Component {
 
 	constructor(props) {
 
@@ -14,7 +14,7 @@ class HouseholdSize extends Component {
 
 			<label>
 			
-			Choose your household size:
+			Choose your zip code:
 
 
 				<select name="householdSize" value={this.props.value} onChange={this.props.handleInputChange}>
@@ -36,4 +36,4 @@ class HouseholdSize extends Component {
 	};
 };
 
-export default HouseholdSize;
+export default ZipCode;

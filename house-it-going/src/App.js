@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Questionnaire } from './components/Questionnaire';
+import Questionnaire from './components/Questionnaire/Questionnaire';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Security, ImplicitCallback } from '@okta/okta-react';
 import Home from './components/Home';
@@ -27,46 +27,21 @@ class App extends Component {
 
             <Nav />
 
+            <div style={{height: '100px', width: '100%'}}>
+            </div>
+
             <div>
               <Route path='/' exact={true} component={Home}/>
               <Route path='/implicit/callback' component={ImplicitCallback}/>            
               <Route exact path="/" component={HomePage} />
               <Route exact path="/dash" component={Dashboard} />
               <Route exact path="/login" component={UserProfile} />
-            </div>
-
-            <Footer />
-          </Security>          
-      </Router>
-    );
-  }
-}
-
-class App extends Component {
-  render() {
-    return (
-
-      <Router>
-          <Security issuer={config.issuer}
-                    client_id={config.client_id}
-                    redirect_uri={config.redirect_uri}
-          >
-
-            <div>
-
-              <Route path='/' exact={true} component={Home}/>
-              <Route path='/implicit/callback' component={ImplicitCallback}/>            
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/dash" component={Dashboard} />
-              <Route exact path="/login" component={UserProfile} />
               <Route exact path="/questionnaire" component={Questionnaire} />
-
             </div>
 
             <Footer />
           </Security>          
       </Router>
-
     );
   }
 }
