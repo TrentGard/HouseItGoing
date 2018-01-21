@@ -8,7 +8,7 @@ import Jumbotron from "../../components/Jumbotron";
 class HomePage extends Component {
 
 	componentDidMount() {
-		this.searchListings()
+		this.searchListings("78722")
 	}
 
     searchListings(zipCode) {

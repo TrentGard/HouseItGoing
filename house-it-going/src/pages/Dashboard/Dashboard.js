@@ -13,9 +13,11 @@ class Dashboard extends Component {
         mfi: ""
     };
 
-  componentDidMount() {
-    this.renderListings("78722");
-  }
+
+    componentDidMount() {
+        this.renderListings("78722")
+        this.saveListing("aaron")
+    }
 
   searchListings(zipCode) {
       API.search(zipCode)
@@ -28,6 +30,12 @@ class Dashboard extends Component {
     .then(res => this.setState({ results: res.data }))
     .catch(err => console.log(err))
   }
+
+  saveListing(dataToSave) {
+      API.saveListing(dataToSave)
+      .then(function (result){
+        console.log(result);
+  })
 
   handleBtnClick = event => {
     // Get the data-value of the clicked button
@@ -46,6 +54,7 @@ class Dashboard extends Component {
       // If already in user database, don't add again
       //Show image for 'Saved' listing
       console.log("already saved");
+
 
     }
     // Replace our component's state with newState
