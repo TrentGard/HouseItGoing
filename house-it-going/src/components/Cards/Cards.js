@@ -3,9 +3,9 @@ import { Card } from 'semantic-ui-react'
 
 const items = [
   {
-    header: 'Project Report - April',
-    description: 'Leverage agile frameworks to provide a robust synopsis for high level overviews.',
-    meta: 'ROI: 30%',
+    header: 'Unit Availibility',
+    description: 'Percentage of units that are currently available.',
+    meta: '{props.availibility}%',
   },
   {
     header: 'Project Report - May',
@@ -19,8 +19,8 @@ const items = [
   },
 ]
 
-const Cards = () => (
+const Cards = props => (
   <Card.Group items={items} />
 )
 
-export default Cards
+export default Cards;

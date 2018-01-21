@@ -35,7 +35,6 @@ class App extends Component {
               <Route path='/implicit/callback' component={ImplicitCallback}/> 
               <Route exact path="/" component={HomePage} />
               <Route exact path="/dash" component={Dashboard} />
-              <Route exact path="/login" component={UserProfile} />
               <Route exact path="/questionnaire" component={Questionnaire} />
 
             </div>
