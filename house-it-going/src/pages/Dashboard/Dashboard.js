@@ -9,13 +9,13 @@ import API from "../../utils/API";
 class Dashboard extends Component {
   state = {
         results: [],
-
         zipCode: "",
         mfi: ""
     };
 
     componentDidMount() {
         this.renderListings("78722")
+        this.saveListing("aaron")
     }
 
     searchListings(zipCode) {
@@ -29,16 +29,13 @@ class Dashboard extends Component {
       API.search(zipCode)
       .then(res => this.setState({ results: res.data }))
       .catch(err => console.log(err))
-
-    findListings(zipcode) {
-      API.search(zipCode).then(function (res){
-        this.setState({
-          result: res.data
-        }).catch(function (err){
-          console.log(err)
-        })
+    }
+   
+    saveListing(dataToSave) {
+      API.saveListing(dataToSave)
+      .then(function (result){
+        console.log(result);
       })
-
     }
 
     // Access data points on returned JSON from COA API 

@@ -8,7 +8,7 @@ import { Container } from "../../components/Grid";
 class HomePage extends Component {
 
 	componentDidMount() {
-		this.searchListings()
+		this.searchListings("78722")
 	}
 
     searchListings(zipCode) {
