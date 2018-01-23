@@ -14,6 +14,7 @@ class Dashboard extends Component {
     };
 
 
+
     componentDidMount() {
         this.renderListings("78722")
         this.saveListing({
@@ -23,6 +24,7 @@ class Dashboard extends Component {
           councilDistrict: 1
         })
     }
+
 
   searchListings(zipCode) {
       API.search(zipCode)
@@ -42,6 +44,7 @@ class Dashboard extends Component {
         console.log(result);
       })
   }
+
 
   // handleBtnClick = event => {
   //   // Get the data-value of the clicked button
@@ -66,6 +69,15 @@ class Dashboard extends Component {
   //   // Replace our component's state with newState
   //   this.setState(newState);
   // };
+    } else {
+      // If already in user database, don't add again
+      //Show image for 'Saved' listing
+      console.log("already saved");
+    }
+
+    // Replace our component's state with newState
+    this.setState(newState);
+  };
 
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
@@ -79,6 +91,33 @@ class Dashboard extends Component {
     return (
       <div >
         <Container fluid>
+          <Row>
+            <Col size="md-4 sm-12">
+              <Cards 
+              name="Unit Availibility"
+              description="Percentage of units currently available"
+              value="80%"
+
+              />
+            </Col>
+            <Col size="md-4 sm-12">
+              <Cards 
+              name="Upcoming Units"
+              description="Number of units in production"
+              value="600"
+             
+              />
+            </Col>
+            <Col size="md-4 sm-12">
+              <Cards 
+              name="Misc"
+              description="TBD"
+              value="100"
+             
+              />
+            </Col>                         
+          </Row>
+          <div style={{height: '75px', width: '100%'}}/>
           <Row>
             <Col size="md-12">
               {this.state.results.length ? (
@@ -101,15 +140,11 @@ class Dashboard extends Component {
                 <h3>No Results to Display</h3>
               )}
             </Col>
-          </Row>
-          <Row>
-            <Col size="md-4 sm-12">
-              <Cards />
-            </Col>
-          </Row>          
+          </Row>         
         </Container>
       </div>  
-    );
-  }
+      );
+    }
 }
+
 export default Dashboard;

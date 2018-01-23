@@ -3,9 +3,14 @@ import { withAuth } from '@okta/okta-react';
 import styled from 'styled-components';
 
 const Button = styled.div`
-  background-color: white; 
+  width: 75px;
+  height: 30px;
+  text-align: center;
+  background-color: #e3ad86; 
   color: black; 
-  border: 2px solid #008CBA;
+  border: 2px solid #DCDCDC;
+  font-size: 110%;
+  font-weight: bold;
 
   &:hover {
     background-color: #008CBA;
