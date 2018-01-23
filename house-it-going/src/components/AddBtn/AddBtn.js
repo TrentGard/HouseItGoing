@@ -2,7 +2,7 @@ import React from 'react';
 
 const AddBtn = props => (
   <button
-    onClick={props.onClick}
+    onClick={props.handleBtnClick}
     className={`add-btn ${props["data-value"]}`}
     {...props}>
   Save
