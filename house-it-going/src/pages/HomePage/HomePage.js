@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import Jumbotron from "../../components/Jumbotron";
 import ZipForm from "../../components/ZipForm";
 // import { Container } from "../../components/Grid";
+import Questionnaire from "../../components/Questionnaire/Questionnaire"
 
 
 class HomePage extends Component {
@@ -40,6 +41,7 @@ class HomePage extends Component {
           type="text"
           placeholder="Enter a zip code to search listings"       
         />
+        <Questionnaire />
       </Jumbotron>        
     );
   }
