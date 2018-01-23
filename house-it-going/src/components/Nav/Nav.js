@@ -7,9 +7,15 @@ const Nav = () =>
 
 
   <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
+    <button className="navbar-toggler navbar-toggler-right dropdown dropbtn" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon dropbtn"></span>
+      <div class="dropdown-content">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
     </button>
+
     <a className="navbar-brand" href="/">House It Going</a>
 
     <div className="collapse navbar-collapse">
