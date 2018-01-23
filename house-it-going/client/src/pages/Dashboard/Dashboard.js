@@ -10,8 +10,21 @@ class Dashboard extends Component {
   
   state = {
         results: [],
-        zipCode: "",
-        mfi: ""
+        listingInfo: {
+          propertyId: "",
+          address: "",
+          zip: "",
+          councilDistrict: ""
+        },
+        searchParameters: {
+          zip: "",
+          mfi: ""
+        },
+        userInfo: {
+          userName: "",
+          email: "",
+          password: ""
+        }
     };
 
 
@@ -19,7 +32,9 @@ class Dashboard extends Component {
     componentDidMount() {
 
         //test COA search API functionality
-        this.searchListings("78722", "65")
+        this.searchListings("78722", "65");
+
+        this.renderListings("78722", "80");
 
         //test save listing to db functionality
         this.saveListing({
@@ -27,17 +42,17 @@ class Dashboard extends Component {
           address: "trent",
           zip: "aaron",
           councilDistrict: 1
-        })
+        });
 
         //test save new user to db functionality
         this.createUser({
           userName: "aaron",
           email: "aaron",
           password: "aaron"
-        })
+        });
     }
 
-
+  //searchListings funciton is only a test function for hitting the COA API
   searchListings(zipCode, mfiNumber) {
       API.search(zipCode, mfiNumber)
       .then(res => console.log(res))
