@@ -1,13 +1,15 @@
 import React from "react";
-import { Button, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react';
+import './ZipForm.css'
 
-const ZipForm = () => (
-  <Form>
-    <Form.Field>
-      <input placeholder='Enter a ZIP code' />
-    </Form.Field>
-    <Button type='submit'>Search</Button>
-  </Form>
-)
+const ZipForm = props =>
+
+	<Form>
+		<Form.Field>
+			<label>Find affordable housing</label>
+			<input value={props.zipCode}/>
+		</Form.Field>
+		<Button onClick={props.handleFormSubmit}>Search</Button>
+	</Form>
 
 export default ZipForm;
