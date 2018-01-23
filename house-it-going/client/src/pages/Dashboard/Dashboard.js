@@ -16,7 +16,12 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.renderListings("78722")
-        this.saveListing("aaron")
+        this.saveListing({
+          propertyId: "aaron",
+          address: "aaron",
+          zip: "aaron",
+          councilDistrict: 1
+        })
     }
 
   searchListings(zipCode) {
@@ -36,30 +41,31 @@ class Dashboard extends Component {
       .then(function (result){
         console.log(result);
   })
-
-  handleBtnClick = event => {
-    // Get the data-value of the clicked button
-    const btnType = event.target.attributes.getNamedItem("data-value").value;
-    // Clone this.state to the newState object
-    // We'll modify this object and use it to set our component's state
-    const newState = { ...this.state };
-
-    if (btnType === "Save") {
-      // Save to database
-      //Update image to 'Saved'
-      //Set state to 'Saved'
-      console.log("saved");
-
-    } else {
-      // If already in user database, don't add again
-      //Show image for 'Saved' listing
-      console.log("already saved");
-
-
     }
-    // Replace our component's state with newState
-    this.setState(newState);
-  };
+
+  // handleBtnClick = event => {
+  //   // Get the data-value of the clicked button
+  //   const btnType = event.target.attributes.getNamedItem("data-value").value;
+  //   // Clone this.state to the newState object
+  //   // We'll modify this object and use it to set our component's state
+  //   const newState = { ...this.state };
+
+  //   if (btnType === "Save") {
+  //     // Save to database
+  //     //Update image to 'Saved'
+  //     //Set state to 'Saved'
+  //     console.log("saved");
+
+  //   } else {
+  //     // If already in user database, don't add again
+  //     //Show image for 'Saved' listing
+  //     console.log("already saved");
+
+
+  //   }
+  //   // Replace our component's state with newState
+  //   this.setState(newState);
+  // };
 
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
