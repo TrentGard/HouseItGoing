@@ -7,6 +7,7 @@ import API from "../../utils/API";
 
 
 class Dashboard extends Component {
+  
   state = {
         results: [],
         zipCode: "",
@@ -16,34 +17,52 @@ class Dashboard extends Component {
 
 
     componentDidMount() {
-        this.renderListings("78722")
+
+        //test COA search API functionality
+        this.searchListings("78722", "65")
+
+        //test save listing to db functionality
         this.saveListing({
           propertyId: "aaron",
           address: "trent",
           zip: "aaron",
           councilDistrict: 1
         })
+
+        //test save new user to db functionality
+        this.createUser({
+          userName: "aaron",
+          email: "aaron",
+          password: "aaron"
+        })
     }
 
 
-  searchListings(zipCode) {
-      API.search(zipCode)
+  searchListings(zipCode, mfiNumber) {
+      API.search(zipCode, mfiNumber)
       .then(res => console.log(res))
       .catch(err => console.log(err));
-  }
+  };
 
-  renderListings(zipCode) {
-    API.search(zipCode)
+  renderListings(zipCode, mfiNumber) {
+    API.search(zipCode, mfiNumber)
     .then(res => this.setState({ results: res.data }))
     .catch(err => console.log(err))
-  }
+  };
 
-  saveListing(dataToSave) {
-      API.saveListing(dataToSave)
+  saveListing(listingData) {
+      API.saveListing(listingData)
       .then(function (result){
         console.log(result);
-      })
-  }
+      });
+  };
+
+  createUser(userData) {
+    API.createUser(userData)
+    .then(function (result){
+      console.log(result)
+    });
+  };
 
 
   // handleBtnClick = event => {

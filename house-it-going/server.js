@@ -9,7 +9,7 @@ const mysql = require("mysql");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use('/api', routes);
+app.use(routes);
 
 
 db.sequelize.sync({force: true}).then(function() {
