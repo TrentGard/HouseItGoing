@@ -2,21 +2,15 @@ const express = require("express");
 const db = require("./models");
 const routes = require("./routes");
 const bodyParser = require("body-parser")
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 const mysql = require("mysql");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(routes);
+app.use('/api', routes);
 
-const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'houseItGoing',
-});
 
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {

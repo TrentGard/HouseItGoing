@@ -10,7 +10,7 @@ export default {
 		return axios.get(BASEURL + zip + zipCode + APIKEY);
 	},
 	saveListing: function (dataToSave) {
-		return axios.post("/dash", dataToSave);
+		return axios.post("/api/listings", dataToSave);
 	}
 };
 
