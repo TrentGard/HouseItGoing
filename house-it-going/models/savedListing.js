@@ -24,7 +24,7 @@ module.exports = function (sequelize, DataTypes) {
 
 		SavedListing.belongsTo(models.User, {
 			foreignKey: {
-				allowNull: false
+				allowNull: true
 			}
 		});
 	};

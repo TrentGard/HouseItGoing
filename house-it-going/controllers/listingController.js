@@ -6,11 +6,11 @@ module.exports = {
 		console.log("<<<<--->>>>" + req.body)
 
 		db.SavedListing.create({
-			propertyId: req.body.property_id,
+			propertyId: req.body.propertyId,
 			address: req.body.address,
-			zip: req.body.zip_code,
-			councilDistrict: req.body,council_district
-			// UserId: req.params.id
+			zip: req.body.zip,
+			councilDistrict: req.body.councilDistrict
+			// UserId: req.body.UserId
 		}).then(function(data) {
 			res.json(data);
 			console.log(data);

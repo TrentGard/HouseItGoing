@@ -11,6 +11,6 @@
 const router = require("express").Router();
 const listingRoutes = require("./apiRoutes");
 
-router.use("/dash", listingRoutes);
+router.use("/listings", listingRoutes);
 
 module.exports = router;
