@@ -23,7 +23,7 @@ class App extends Component {
                     client_id={config.client_id}
                     redirect_uri={config.redirect_uri}
           >
-          
+
             <Nav />
 
             <div style={{height: '100px', width: '100%'}}>

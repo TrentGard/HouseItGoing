@@ -8,6 +8,17 @@ class AnnualIncome extends Component {
 
 	}
 
+	renderOptions(){
+
+			var arrayOfOptions = this.props.incomes.map((incomeData) => {
+					return(
+						<option key={incomeData} value={incomeData}>{incomeData}</option>
+						)
+			})
+
+			return arrayOfOptions;
+	}
+
 	render() {
 
 		return (
@@ -17,16 +28,10 @@ class AnnualIncome extends Component {
 			Choose your annual income:
 
 
-				<select name="annualIncome" value={this.props.value} onChange={this.props.handleInputChange}>
+				<select name="annualIncome">
 
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-					<option value="5">5</option>
-					<option value="6">6</option>
-					<option value="7">7</option>
-					<option value="8">8</option>
+				{this.renderOptions()}
+
 
 				</select>
 

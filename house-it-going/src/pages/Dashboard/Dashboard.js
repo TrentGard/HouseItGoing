@@ -124,7 +124,8 @@ class Dashboard extends Component {
           </Row>         
         </Container>
       </div>  
-    );
-  }
+      );
+    }
 }
+
 export default Dashboard;
