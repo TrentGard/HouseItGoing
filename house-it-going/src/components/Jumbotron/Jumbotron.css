@@ -10,10 +10,8 @@
     filter: grayscale(20%);
 }
 
-h1 {
-	color: white;
-}
-
 .search-body {
 	text-align: center;
+	max-width: 650px;
+	width: 100%;	
 }

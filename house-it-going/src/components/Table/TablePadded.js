@@ -2,7 +2,7 @@ import React from 'react';
 import './Table.css';
 import { Table } from 'semantic-ui-react';
 
-export const TablePadded = props => (
+export const TablePadded = (props) => (
       <Table celled padded>
         <Table.Header>
           <Table.Row>
