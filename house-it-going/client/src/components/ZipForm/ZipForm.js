@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Form } from 'semantic-ui-react';
-import './ZipForm.css'
+// import './ZipForm.css'
 
 const ZipForm = props =>
 

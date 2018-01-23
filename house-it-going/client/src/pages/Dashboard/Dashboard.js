@@ -19,7 +19,7 @@ class Dashboard extends Component {
         this.renderListings("78722")
         this.saveListing({
           propertyId: "aaron",
-          address: "whitt",
+          address: "trent",
           zip: "aaron",
           councilDistrict: 1
         })
@@ -69,15 +69,15 @@ class Dashboard extends Component {
   //   // Replace our component's state with newState
   //   this.setState(newState);
   // };
-    } else {
-      // If already in user database, don't add again
-      //Show image for 'Saved' listing
-      console.log("already saved");
-    }
+  //   } else {
+  //     // If already in user database, don't add again
+  //     //Show image for 'Saved' listing
+  //     console.log("already saved");
+  //   }
 
-    // Replace our component's state with newState
-    this.setState(newState);
-  };
+  //   // Replace our component's state with newState
+  //   this.setState(newState);
+  // };
 
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
