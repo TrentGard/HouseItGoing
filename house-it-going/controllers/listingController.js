@@ -3,7 +3,7 @@ const db = require("../models");
 module.exports = {
 	create: function(req, res) {
 
-		console.log("<<<<--->>>>" + req.body)
+		console.log("<<<<LISTING SAVED>>>>" + req.body)
 
 		db.SavedListing.create({
 			propertyId: req.body.propertyId,

@@ -9,7 +9,9 @@ import Questionnaire from "../../components/Questionnaire/Questionnaire"
 class HomePage extends Component {
 
   state = {
-    zipCode: ""
+    zipCode: "",
+    size: "",
+    income: ""
   };
 
   handleFormSubmit = event => {
@@ -24,7 +26,7 @@ class HomePage extends Component {
 		this.searchListings("78722")
 	}
 
-  searchListings(zipCode) {
+  searchListings(zipCode, size, income) {
       API.search(zipCode)
       .then(res => console.log(res))
       .catch(err => console.log(err));
