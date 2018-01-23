@@ -11,12 +11,6 @@ app.use(bodyParser.json());
 
 app.use('/api', routes);
 
-// const connection = mysql.createConnection({
-//   host: 'localhost',
-//   user: 'root',
-//   password: '',
-//   database: 'houseItGoing',
-// });
 
 db.sequelize.sync({force: true}).then(function() {
   app.listen(PORT, function() {

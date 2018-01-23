@@ -18,7 +18,7 @@ class Dashboard extends Component {
         this.renderListings("78722")
         this.saveListing({
           propertyId: "aaron",
-          address: "aaron",
+          address: "whitt",
           zip: "aaron",
           councilDistrict: 1
         })
@@ -40,8 +40,8 @@ class Dashboard extends Component {
       API.saveListing(dataToSave)
       .then(function (result){
         console.log(result);
-  })
-    }
+      })
+  }
 
   // handleBtnClick = event => {
   //   // Get the data-value of the clicked button
