@@ -9,7 +9,6 @@ import API from "../../utils/API";
 class Dashboard extends Component {
   state = {
         results: [],
-
         zipCode: "",
         mfi: ""
     };
@@ -30,14 +29,14 @@ class Dashboard extends Component {
       .then(res => this.setState({ results: res.data }))
       .catch(err => console.log(err))
 
-    findListings(zipcode) {
-      API.search(zipCode).then(function (res){
-        this.setState({
-          result: res.data
-        }).catch(function (err){
-          console.log(err)
-        })
-      })
+    // findListings(zipcode) {
+    //   API.search(zipCode).then(function (res){
+    //     this.setState({
+    //       result: res.data
+    //     }).catch(function (err){
+    //       console.log(err)
+    //     })
+    //   })
 
     }
 
@@ -52,7 +51,7 @@ class Dashboard extends Component {
   render() {
     return (
 
-      <div >
+      <div>
         <Container fluid>
           <Row>
             <Col size="md-12">
@@ -77,8 +76,8 @@ class Dashboard extends Component {
           </Row>          
         </Container>
       </div>  
-    );
+      );
+    }
   }
-}
 
 export default Dashboard;

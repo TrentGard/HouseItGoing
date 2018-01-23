@@ -23,7 +23,7 @@ class App extends Component {
                     client_id={config.client_id}
                     redirect_uri={config.redirect_uri}
           >
-          
+
             <Nav />
 
             <div style={{height: '100px', width: '100%'}}>
@@ -35,7 +35,6 @@ class App extends Component {
               <Route path='/implicit/callback' component={ImplicitCallback}/> 
               <Route exact path="/" component={HomePage} />
               <Route exact path="/dash" component={Dashboard} />
-              <Route exact path="/login" component={UserProfile} />
               <Route exact path="/questionnaire" component={Questionnaire} />
 
             </div>
