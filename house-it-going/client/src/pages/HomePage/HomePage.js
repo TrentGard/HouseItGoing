@@ -22,11 +22,11 @@ class HomePage extends Component {
   };    
 
 	componentDidMount() {
-		this.searchListings("78722")
+		this.searchListings("78722", "80")
 	}
 
-  searchListings(zipCode, size, income) {
-      API.search(zipCode)
+  searchListings(zipCode, mfi) {
+      API.search(zipCode, mfi)
       .then(res => console.log(res))
       .catch(err => console.log(err));
 

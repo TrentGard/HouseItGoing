@@ -69,14 +69,20 @@ class Dashboard extends Component {
       API.saveListing(listingData)
       .then(function (result){
         console.log(result);
-      });
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
   };
 
   createUser(userData) {
     API.createUser(userData)
     .then(function (result){
       console.log(result)
-    });
+    })
+    .catch(function (err) {
+      console.log(err)
+    })
   };
 
 
