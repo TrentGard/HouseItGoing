@@ -10,6 +10,7 @@ export const TablePadded = (props) => (
             <Table.HeaderCell>End Year</Table.HeaderCell>
             <Table.HeaderCell>Address</Table.HeaderCell>
             <Table.HeaderCell>Zip Code</Table.HeaderCell>
+            <Table.HeaderCell>Property ID</Table.HeaderCell>
             <Table.HeaderCell singleLine>Save Listing</Table.HeaderCell>
           </Table.Row>
         </Table.Header>

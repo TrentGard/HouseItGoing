@@ -5,7 +5,7 @@ module.exports = function (sequelize, DataTypes) {
 		//column contains the unique property ID
 		propertyId: {
 			type: DataTypes.STRING,
-			allowNull: false
+			allowNull: true
 		},
 		address: {
 			type: DataTypes.STRING

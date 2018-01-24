@@ -66,6 +66,7 @@ class Dashboard extends Component {
   };
 
   saveListing(listingData) {
+      console.log(this.state.listingInfo)
       API.saveListing(listingData)
       .then(function (result){
         console.log(result);
@@ -86,38 +87,34 @@ class Dashboard extends Component {
   };
 
 
-  // handleBtnClick = event => {
-  //   // Get the data-value of the clicked button
-  //   const btnType = event.target.attributes.getNamedItem("data-value").value;
-  //   // Clone this.state to the newState object
-  //   // We'll modify this object and use it to set our component's state
-  //   const newState = { ...this.state };
+  handleBtnClick = event => {
+    // Get the data-value of the clicked button
+    const btnType = event.target.attributes.getNamedItem("data-value").value;
+    // Clone this.state to the newState object
+    // We'll modify this object and use it to set our component's state
+    const newState = { ...this.state };
 
-  //   if (btnType === "Save") {
-  //     // Save to database
-  //     //Update image to 'Saved'
-  //     //Set state to 'Saved'
-  //     console.log("saved");
+    // Replace our component's state with newState
+    this.setState(newState);
 
-  //   } else {
-  //     // If already in user database, don't add again
-  //     //Show image for 'Saved' listing
-  //     console.log("already saved");
+    console.log(newState)
+  };
 
+  handleFormSubmit = event => {
+    event.preventDefault();
+    
+    this.setState({
+      listingInfo: {
+          propertyId: results.project_id,
+          address: results.address,
+          zip: results.zip,
+          councilDistrict: results.council_district
+        }
+    })
 
-  //   }
-  //   // Replace our component's state with newState
-  //   this.setState(newState);
-  // };
-  //   } else {
-  //     // If already in user database, don't add again
-  //     //Show image for 'Saved' listing
-  //     console.log("already saved");
-  //   }
-
-  //   // Replace our component's state with newState
-  //   this.setState(newState);
-  // };
+    this.saveListing(this.state.listingInfo)
+    
+  };
 
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
@@ -162,16 +159,17 @@ class Dashboard extends Component {
             <Col size="md-12">
               {this.state.results.length ? (
                 <TablePadded>
-                  {this.state.results.map(results => {
+                  {this.state.results.map(listings => {
                     return (
                       <TableItem
-                        handleBtnClick={this.handleBtnClick}
-                        key={results.project_id}
-                        address={results.address}
-                        zip={results.zip_code}
-                        councilDistrict={results.council_district}
+                        // handleBtnClick={this.handleBtnClick}
+                        key={listings.project_id}
+                        address={listings.address}
+                        zip={listings.zip_code}
+                        councilDistrict={listings.council_district}
+                        propertyId={listings.project_id}
                       >
-                        <AddBtn />
+                        <AddBtn onClick={() => this.handleFormSubmit(listings.project_id)} />
                       </TableItem>   
                     );
                   })};

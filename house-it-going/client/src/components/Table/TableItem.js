@@ -17,6 +17,9 @@ export const TableItem = (props) => (
       	{props.councilDistrict}
       </Table.Cell>
       <Table.Cell>
+        {props.propertyId}
+      </Table.Cell>
+      <Table.Cell>
         {props.children}
       </Table.Cell>
   </Table.Row>

@@ -24,17 +24,10 @@ class AnnualIncome extends Component {
 		return (
 
 			<label>
-			
 			Choose your annual income:
-
-
 				<select name="annualIncome">
-
 				{this.renderOptions()}
-
-
 				</select>
-
 			</label>
 	
 		);
