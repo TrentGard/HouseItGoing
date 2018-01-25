@@ -15,19 +15,22 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		councilDistrict: {
 			type: DataTypes.INTEGER
+		},
+		UserId: {
+			type: DataTypes.INTEGER
 		}
 		
 	});
 
 	//associating each saved listing with a user profile
-	SavedListing.associate = function (models) {
+	// SavedListing.associate = function (models) {
 
-		SavedListing.belongsTo(models.User, {
-			foreignKey: {
-				allowNull: true
-			}
-		});
-	};
+	// 	SavedListing.belongsTo(models.User, {
+	// 		foreignKey: {
+	// 			allowNull: true
+	// 		}
+	// 	});
+	// };
 	
 	return SavedListing;
 
