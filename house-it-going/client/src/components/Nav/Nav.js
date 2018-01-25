@@ -10,9 +10,9 @@ const Nav = () =>
     <button className="navbar-toggler navbar-toggler-right dropdown dropbtn" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon dropbtn"></span>
       <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
+      <a href="localhost:3000/dash">Dashboard</a>
+      <a href="#">Contact</a>
+      {/*<a href="#">Link 3</a>*/}
     </div>
     </button>
 

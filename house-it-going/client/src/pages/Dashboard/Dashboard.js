@@ -36,20 +36,20 @@ class Dashboard extends Component {
 
         this.renderListings("78722", "80");
 
-        //test save listing to db functionality
-        this.saveListing({
-          propertyId: "aaron",
-          address: "trent",
-          zip: "aaron",
-          councilDistrict: 1
-        });
+        // //test save listing to db functionality
+        // this.saveListing({
+        //   propertyId: "aaron",
+        //   address: "trent",
+        //   zip: "aaron",
+        //   councilDistrict: 1
+        // });
 
-        //test save new user to db functionality
-        this.createUser({
-          userName: "aaron",
-          email: "aaron",
-          password: "aaron"
-        });
+        // //test save new user to db functionality
+        // this.createUser({
+        //   userName: "aaron",
+        //   email: "aaron",
+        //   password: "aaron"
+        // });
     }
 
   //searchListings funciton is only a test function for hitting the COA API
@@ -66,7 +66,7 @@ class Dashboard extends Component {
   };
 
   saveListing(listingData) {
-      console.log(this.state.listingInfo)
+      
       API.saveListing(listingData)
       .then(function (result){
         console.log(result);
@@ -86,34 +86,17 @@ class Dashboard extends Component {
     })
   };
 
+  handleFormSubmit = (listing) => {
+    console.log(window.localStorage.UserId);
+    console.log(listing)
 
-  handleBtnClick = event => {
-    // Get the data-value of the clicked button
-    const btnType = event.target.attributes.getNamedItem("data-value").value;
-    // Clone this.state to the newState object
-    // We'll modify this object and use it to set our component's state
-    const newState = { ...this.state };
-
-    // Replace our component's state with newState
-    this.setState(newState);
-
-    console.log(newState)
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    
-    this.setState({
-      listingInfo: {
-          propertyId: results.project_id,
-          address: results.address,
-          zip: results.zip,
-          councilDistrict: results.council_district
-        }
+    this.saveListing({
+      propertyId: listing.project_id,
+      address: listing.address,
+      zip: listing.zip_code,
+      councilDistrict: listing.council_district,
+      UserId: localStorage.UserId
     })
-
-    this.saveListing(this.state.listingInfo)
-    
   };
 
 // Access data points on returned JSON from COA API 
@@ -159,17 +142,18 @@ class Dashboard extends Component {
             <Col size="md-12">
               {this.state.results.length ? (
                 <TablePadded>
-                  {this.state.results.map(listings => {
+                  {this.state.results.map(listing => {
                     return (
                       <TableItem
                         // handleBtnClick={this.handleBtnClick}
-                        key={listings.project_id}
-                        address={listings.address}
-                        zip={listings.zip_code}
-                        councilDistrict={listings.council_district}
-                        propertyId={listings.project_id}
+                        key={listing.project_id}
+                        address={listing.address}
+                        zip={listing.zip_code}
+                        councilDistrict={listing.council_district}
+                        propertyId={listing.project_id}
+                        
                       >
-                        <AddBtn onClick={() => this.handleFormSubmit(listings.project_id)} />
+                        <AddBtn onClick={() => this.handleFormSubmit(listing)} />
                       </TableItem>   
                     );
                   })};

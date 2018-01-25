@@ -1,0 +1,13 @@
+.field {
+	/*width: 70px;*/
+	display: flex;
+};
+
+.name-one {
+	color: white;
+};
+
+.big-form {
+	align-items: left;
+	display: flex;
+}

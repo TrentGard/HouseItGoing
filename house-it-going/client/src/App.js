@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 // import {Container} from "./components/Grid";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
+import Contact from "./pages/Contact";
 
 const config = {
   issuer: 'https://dev-478651.oktapreview.com/oauth2/default',
@@ -36,6 +37,7 @@ class App extends Component {
               <Route exact path="/" component={HomePage} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/questionnaire" component={Questionnaire} />
+              <Route exact path="/contact" component={Contact} />
 
             </div>
 
