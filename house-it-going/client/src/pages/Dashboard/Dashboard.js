@@ -115,6 +115,12 @@ class Dashboard extends Component {
     })
   };
 
+
+  //when logout button is clicked, delete UserId from localstorage
+  logout = (event) => {
+    localStorage.removeItem("UserId")
+  }
+
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
   //res.data[x].affordability_end_year

@@ -34,14 +34,10 @@ class ZipForm extends Component {
 
 	createUser(userData) {
 
-		if(this.state.userName || this.state.email) {
-			return //error message saying hey that already exists
-		}
-		else {
-			API.createUser(userData)
-	    	.then(res => localStorage.UserId = res.data)
-	    	.catch(err => console.log(err))
-		}  
+		API.createUser(userData)
+	    .then(res => localStorage.UserId = res.data)
+	    .catch(err => console.log(err))
+	 
   	};
 
 	render () {
