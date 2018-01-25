@@ -3,7 +3,8 @@ const listingController = require("../../../controllers/listingController");
 
 
 router.route("/")
-	.post(listingController.create);
+	.post(listingController.create)
+	.get(listingController.findAll)
 
 
 module.exports = router;

@@ -18,4 +18,19 @@ module.exports = {
 			console.log(error)
 		})
 	}
+
+	findAll: function (req, res) {
+		console.log("-----Listings Found!!!------" + req.body)
+
+		db.SavedListing.findAll({
+			where: {
+				UserId: req.body.UserId
+			}
+		}).then(function (data) {
+			res.json(data);
+			console.log(data)
+		}).catch(function (error) {
+			console.log(error)
+		})
+	}
 };
