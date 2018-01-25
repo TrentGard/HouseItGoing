@@ -16,7 +16,6 @@ class ZipCode extends Component {
 			
 			Choose your zip code:
 
-
 				<select name="householdSize" value={this.props.value} onChange={this.props.handleInputChange}>
 
 					<option value="78610">78610</option>

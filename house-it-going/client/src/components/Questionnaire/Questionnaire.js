@@ -16,7 +16,7 @@ class Questionnaire extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-		householdNumber: 1,
+		householdNumber: "",
 		householdArray: annualArray[0]
 		}
 

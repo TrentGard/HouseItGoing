@@ -69,15 +69,15 @@ class Dashboard extends Component {
   //   // Replace our component's state with newState
   //   this.setState(newState);
   // };
-    } else {
-      // If already in user database, don't add again
-      //Show image for 'Saved' listing
-      console.log("already saved");
-    }
+  //   } else {
+  //     // If already in user database, don't add again
+  //     //Show image for 'Saved' listing
+  //     console.log("already saved");
+  //   }
 
-    // Replace our component's state with newState
-    this.setState(newState);
-  };
+  //   // Replace our component's state with newState
+  //   this.setState(newState);
+  // };
 
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
