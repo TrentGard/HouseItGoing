@@ -28,8 +28,12 @@ class HomePage extends Component {
 
   searchListings(zipCode, mfi) {
       API.search(zipCode, mfi)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .then(function (res){
+        console.log(res)
+      })
+      .catch(function (err) {
+        console.log(err)
+      });
 
   }	
 

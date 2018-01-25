@@ -14,11 +14,11 @@ module.exports = function (sequelize, DataTypes) {
 	});
 
 	//associating authors with their saved listings
-	User.associate = function (models) {
+	// User.associate = function (models) {
 		
-		User.hasMany(models.SavedListing);
+	// 	User.hasMany(models.SavedListing);
 
-	};
+	// };
 
 	return User;
 	
