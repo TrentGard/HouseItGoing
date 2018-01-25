@@ -17,7 +17,7 @@ module.exports = {
 		}).catch(function (error) {
 			console.log(error)
 		})
-	}
+	},
 
 	findAll: function (req, res) {
 		console.log("-----Listings Found!!!------" + req.body)
