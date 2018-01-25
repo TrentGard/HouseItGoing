@@ -50,6 +50,8 @@ class Dashboard extends Component {
         //   email: "aaron",
         //   password: "aaron"
         // });
+
+       
     }
 
   //searchListings funciton is only a test function for hitting the COA API
@@ -59,12 +61,14 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
+  //renderListings searches using user input and renders the results to the page
   renderListings(zipCode, mfiNumber) {
     API.search(zipCode, mfiNumber)
     .then(res => this.setState({ results: res.data }))
     .catch(err => console.log(err))
   };
 
+  //saveListing saves a particular listing to the db when user clicks save button
   saveListing(listingData) {
       
       API.saveListing(listingData)
@@ -76,9 +80,9 @@ class Dashboard extends Component {
       })
   };
 
-  createUser(userData) {
-    API.createUser(userData)
-    .then(function (result){
+  findUserListings(UserId) {
+    API.findUserListings(UserId)
+    .then(function (result) {
       console.log(result)
     })
     .catch(function (err) {
@@ -86,6 +90,18 @@ class Dashboard extends Component {
     })
   };
 
+  // createUser(userData) {
+  //   API.createUser(userData)
+  //   .then(function (result){
+  //     console.log(result)
+  //   })
+  //   .catch(function (err) {
+  //     console.log(err)
+  //   })
+  // };
+
+
+  //handleFormSubmit calls the saveListing function and passes it the relevant data
   handleFormSubmit = (listing) => {
     console.log(window.localStorage.UserId);
     console.log(listing)
