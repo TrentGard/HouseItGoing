@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import Cards from '../../components/Cards';
+import {StatCard, CardContainer} from '../../components/Card';
 import {TablePadded, TableItem} from "../../components/Table/";
-import AddBtn from '../../components/AddBtn';
-import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 
 
 class Dashboard extends Component {
   
   state = {
-        results: [],
+        listings: [],
         listingInfo: {
           propertyId: "",
           address: "",
@@ -25,32 +23,28 @@ class Dashboard extends Component {
           email: "",
           password: ""
         }
-    };
+  };
 
+  componentDidMount() {
+    this.searchListings("78722", "65");
+    this.renderListings("78722", "80")
 
+    // //test save listing to db functionality
+    // this.saveListing({
+    //   propertyId: "aaron",
+    //   address: "trent",
+    //   zip: "aaron",
+    //   councilDistrict: 1
+    // });
 
-    componentDidMount() {
+    // //test save new user to db functionality
+    // this.createUser({
+    //   userName: "aaron",
+    //   email: "aaron",
+    //   password: "aaron"
+    // });
 
-        //test COA search API functionality
-        this.searchListings("78722", "65");
-
-        this.renderListings("78722", "80");
-
-        //test save listing to db functionality
-        this.saveListing({
-          propertyId: "aaron",
-          address: "trent",
-          zip: "aaron",
-          councilDistrict: 1
-        });
-
-        //test save new user to db functionality
-        this.createUser({
-          userName: "aaron",
-          email: "aaron",
-          password: "aaron"
-        });
-    }
+  };
 
   //searchListings funciton is only a test function for hitting the COA API
   searchListings(zipCode, mfiNumber) {
@@ -59,26 +53,26 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
-  renderListings(zipCode, mfiNumber) {
+  renderListings = (zipCode, mfiNumber) => {
     API.search(zipCode, mfiNumber)
-    .then(res => this.setState({ results: res.data }))
+    .then(res => 
+      this.setState({ listings: res.data }))
     .catch(err => console.log(err))
   };
 
-  saveListing(listingData) {
-      console.log(this.state.listingInfo)
-      API.saveListing(listingData)
-      .then(function (result){
-        console.log(result);
+  saveListing = (listingData) => {
+    API.saveListing(listingData)
+      .then(function (result) {
+        console.log(result)
       })
       .catch(function (err) {
         console.log(err)
       })
   };
 
-  createUser(userData) {
-    API.createUser(userData)
-    .then(function (result){
+  findUserListings(UserId) {
+    API.findUserListings(UserId)
+    .then(function (result) {
       console.log(result)
     })
     .catch(function (err) {
@@ -86,35 +80,35 @@ class Dashboard extends Component {
     })
   };
 
+  // createUser(userData) {
+  //   API.createUser(userData)
+  //   .then(function (result){
+  //     console.log(result)
+  //   })
+  //   .catch(function (err) {
+  //     console.log(err)
+  //   })
+  // };  
 
-  handleBtnClick = event => {
-    // Get the data-value of the clicked button
-    const btnType = event.target.attributes.getNamedItem("data-value").value;
-    // Clone this.state to the newState object
-    // We'll modify this object and use it to set our component's state
-    const newState = { ...this.state };
-
-    // Replace our component's state with newState
-    this.setState(newState);
-
-    console.log(newState)
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
+  handleFormSubmit = (listing) => {
+    console.log(window.localStorage.UserId);
+    console.log(listing)
     
-    this.setState({
-      listingInfo: {
-          propertyId: results.project_id,
-          address: results.address,
-          zip: results.zip,
-          councilDistrict: results.council_district
-        }
+
+    this.saveListing({
+      propertyId: listing.project_id,
+      address: listing.address,
+      zip: listing.zip_code,
+      councilDistrict: listing.council_district,
+      UserId: localStorage.UserId
     })
-
-    this.saveListing(this.state.listingInfo)
-    
   };
+
+  //when logout button is clicked, delete UserId from localstorage
+  logout = (event) => {
+    localStorage.removeItem("UserId")
+  }
+
 
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
@@ -127,62 +121,56 @@ class Dashboard extends Component {
   render() {
     return (
       <div >
-        <Container fluid>
-          <Row>
-            <Col size="md-4 sm-12">
-              <Cards 
-              name="Unit Availibility"
-              description="Percentage of units currently available"
-              value="80%"
+        <CardContainer>
+          <StatCard
+          name="Unit Availibility"
+          description="Percentage of units currently available"
+          value="80%"
+          />
 
-              />
-            </Col>
-            <Col size="md-4 sm-12">
-              <Cards 
-              name="Upcoming Units"
-              description="Number of units in production"
-              value="600"
-             
-              />
-            </Col>
-            <Col size="md-4 sm-12">
-              <Cards 
-              name="Misc"
-              description="TBD"
-              value="100"
-             
-              />
-            </Col>                         
-          </Row>
-          <div style={{height: '75px', width: '100%'}}/>
-          <Row>
-            <Col size="md-12">
-              {this.state.results.length ? (
-                <TablePadded>
-                  {this.state.results.map(listings => {
-                    return (
-                      <TableItem
-                        // handleBtnClick={this.handleBtnClick}
-                        key={listings.project_id}
-                        address={listings.address}
-                        zip={listings.zip_code}
-                        councilDistrict={listings.council_district}
-                        propertyId={listings.project_id}
-                      >
-                        <AddBtn onClick={() => this.handleFormSubmit(listings.project_id)} />
-                      </TableItem>   
-                    );
-                  })};
-                </TablePadded>
-              ) : (
-                <h3>No Results to Display</h3>
-              )}
-            </Col>
-          </Row>         
-        </Container>
+          <StatCard
+          name="Upcoming Units"
+          description="Number of units in production"
+          value="600"
+          />
+
+          <StatCard
+          name="Misc"
+          description="TBD"
+          value="100"
+          />
+        </CardContainer>  
+
+        <div>
+          {this.state.listings.length ? (
+            <TablePadded>
+              {this.state.listings.map(listing => {
+                return (
+                  <TableItem
+                    listing={listing}
+                    key={listing.project_id}
+                    // unitType={listing.}
+                    // endYear={listing.}
+                    address={listing.address}
+                    zip={listing.zip_code}
+                    councilDistrict={listing.council_district}
+                    propertyId={listing.project_id}
+                    onClick={this.handleFormSubmit}
+                  >
+                  </TableItem>   
+                );
+              })};
+            </TablePadded>
+          ) : (
+            <h3>No Results to Display</h3>
+          )}
+        </div>
       </div>  
-      );
-    }
+    );
+  }
 }
 
 export default Dashboard;
+
+
+

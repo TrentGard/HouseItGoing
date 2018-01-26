@@ -9,12 +9,15 @@ export default {
 	search: function (zipCode, mfiNumber) {
 		return axios.get(BASEURL + zipCode + mfiPart1 + mfiNumber + mfiPart2 + APIKEY);
 	},
-	saveListing: function (listingData) {
-		return axios.post("/api/listings", listingData);
+	saveListing: function (listing) {
+		return axios.post("/api/listings", listing);
 	},
 	createUser: function (userData) {
 		return axios.post("/api/users", userData);
-	}
+	},
+	findUserListings: function (UserId) {
+		return axios.get("/api/listings", UserId);
+	}	
 };
 
 

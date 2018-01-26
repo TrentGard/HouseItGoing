@@ -1,43 +1,80 @@
-import React from "react";
+import React, {Component} from "react";
 import "./Nav.css";
+import LoginModal from "../../components/LoginModal";
+import {
+  Button,
+  Container,
+  Menu,
+  Segment,
+  Visibility,
+} from 'semantic-ui-react';
 
-// Component for the Navbar
-
-const Nav = () => 
 
 
-  <nav className="navbar navbar-toggleable-md navbar-light bg-faded">
-    <button className="navbar-toggler navbar-toggler-right dropdown dropbtn" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon dropbtn"></span>
-      <div class="dropdown-content">
-      <a href="#">Link 1</a>
-      <a href="#">Link 2</a>
-      <a href="#">Link 3</a>
-    </div>
-    </button>
+const FixedMenu = () => (
+  <Menu fixed='top' size='large'>
+    <Container className='fixed-menu-items'>
+      <Menu.Item as='a' active>Home</Menu.Item>
+      <Menu.Item as='a'>Work</Menu.Item>
+      <Menu.Item as='a'>Company</Menu.Item>
+      <Menu.Item as='a'>Careers</Menu.Item>
+      <Menu.Menu position='right'>
+        <Menu.Item className='item'>
+          <LoginModal />
+        </Menu.Item>
+        <Menu.Item>
+          <Button as='a' primary>Logout</Button>
+        </Menu.Item>
+      </Menu.Menu>
+    </Container>
+  </Menu>
+)
 
-    <a className="navbar-brand" href="/">House It Going</a>
 
-    <div className="collapse navbar-collapse">
-      <ul className="navbar-nav mr-auto mt-2 mt-md-0">
-        <li className="nav-item active">
-          <a className="nav-link" href="/dash">Dashboard <span className="sr-only">(current)</span></a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="/tbd">Notifications</a>
-        </li>
-        <form className="form-inline my-2 my-lg-0">
-          <input className="form-control mr-sm-2" type="text" placeholder="Search" />
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>      
-        <li className="nav-item">
-          <a className="nav-link disabled" href="/dash:{id}">Account</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" href="/Home">Login</a>
-        </li>      
-      </ul>
-    </div>
-  </nav>    
+class Nav extends Component {
+  state = {}
+
+  hideFixedMenu = () => this.setState({ visible: false })
+  showFixedMenu = () => this.setState({ visible: true })
+
+  render() {
+    const { visible } = this.state
+
+    return (
+      <div>
+        { visible ? <FixedMenu /> : null }
+
+        <Visibility
+          onBottomPassed={this.showFixedMenu}
+          onBottomVisible={this.hideFixedMenu}
+          once={false}
+        >
+
+          <Segment
+            inverted
+            textAlign='center'
+            style={{ minHeight: 100, padding: '1em 0em' }}
+            vertical
+          >
+
+            <Container>
+              <Menu inverted pointing secondary size='large'>
+                <Menu.Item as='a' active>Home</Menu.Item>
+                <Menu.Item as='a'>Work</Menu.Item>
+                <Menu.Item as='a'>Company</Menu.Item>
+                <Menu.Item as='a'>Careers</Menu.Item>
+                <Menu.Item position='right'>
+                  <LoginModal/>
+                  <Button as='a' inverted style={{ marginLeft: '0.5em' }}>Logout</Button>
+                </Menu.Item>
+              </Menu>
+            </Container>
+
+          </Segment>
+        </Visibility>      
+      </div>
+    )
+  }      
+}
 
 export default Nav;

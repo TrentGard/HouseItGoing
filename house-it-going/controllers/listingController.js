@@ -10,7 +10,7 @@ module.exports = {
 			address: req.body.address,
 			zip: req.body.zip,
 			councilDistrict: req.body.councilDistrict
-			// UserId: req.body.UserId
+			// UserId: req.body.UserId	
 		}).then(function(data) {
 			res.json(data);
 			console.log(data);

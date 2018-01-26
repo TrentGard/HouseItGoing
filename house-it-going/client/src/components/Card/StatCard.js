@@ -1,9 +1,10 @@
-import React from 'react'
-import { Card } from 'semantic-ui-react'
+import React from 'react';
+import {
+  Card
+} from 'semantic-ui-react';
 
-const Cards = props => (
+export const StatCard = (props) => (
 
-  <Card.Group>
     <Card>
       <Card.Header>
       {props.name}
@@ -15,7 +16,4 @@ const Cards = props => (
       {props.value}
       </Card.Meta>
     </Card>  
-  </Card.Group>
-)
-
-export default Cards;
+);
