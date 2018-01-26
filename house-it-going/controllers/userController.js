@@ -19,6 +19,7 @@ module.exports = {
 				}).then(function(data) {
 					res.json(data.id);
 					console.log(data.id);
+					
 				}).catch(function (error) {
 					console.log(error)
 				})
@@ -45,6 +46,7 @@ module.exports = {
 			if (data) {
 				res.json(data.id)
 				console.log(data.id)
+				
 			}
 			else {
 				console.log("incorrect login info, please try again.")

@@ -39,9 +39,18 @@ class ZipForm extends Component {
 	 
   	};
 
+  	// login(loginData) {
+  	// 	API.login(loginData)
+  	// 	.then(res => localStorage.UserId = res.data)
+  	// 	.catch(err => console.log(err))
+  	// };
+
   	login(loginData) {
   		API.login(loginData)
-  		.then(res => localStorage.UserId = res.data)
+  		.then(function (res){
+  			localStorage.UserId = res.data
+  			window.location.href = "/dashboard"
+  		})
   		.catch(err => console.log(err))
   	};
 
