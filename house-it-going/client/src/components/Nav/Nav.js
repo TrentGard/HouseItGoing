@@ -32,6 +32,10 @@ const FixedMenu = () => (
 class Nav extends Component {
   state = {}
 
+  logout = (event) => {
+    localStorage.removeItem("UserId")
+  };
+
   hideFixedMenu = () => this.setState({ visible: false })
   showFixedMenu = () => this.setState({ visible: true })
 
@@ -63,7 +67,7 @@ class Nav extends Component {
                 <Menu.Item as='a'>Careers</Menu.Item>
                 <Menu.Item position='right'>
                   <LoginModal/>
-                  <Button as='a' inverted style={{ marginLeft: '0.5em' }}>Logout</Button>
+                  <Button as='a' inverted style={{ marginLeft: '0.5em' }} onClick={this.logout}>Logout</Button>
                 </Menu.Item>
               </Menu>
             </Container>

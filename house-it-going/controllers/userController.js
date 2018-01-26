@@ -24,10 +24,34 @@ module.exports = {
 				})
 			}
 			else {
-				console.log("sorry, that user name has been taken")
+				console.log("that user already exists")
 			}
 		})
 
 		
+	},
+
+	login: function(req, res) {
+		db.User.findOne({
+			where: {
+				userName: req.body.userName,
+				password: req.body.password,
+				email: req.body.email
+			}
+		}).then(function (data){
+
+			
+
+			if (data) {
+				res.json(data.id)
+				console.log(data.id)
+			}
+			else {
+				console.log("incorrect login info, please try again.")
+			}
+			
+		}).catch(function (error){
+			console.log(error)
+		})
 	}
 };
