@@ -1,15 +1,13 @@
 import React, { Component } from "react";
-import Cards from '../../components/Cards';
+import {StatCard, CardContainer} from '../../components/Card';
 import {TablePadded, TableItem} from "../../components/Table/";
-import AddBtn from '../../components/AddBtn';
-import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 
 
 class Dashboard extends Component {
   
   state = {
-        results: [],
+        listings: [],
         listingInfo: {
           propertyId: "",
           address: "",
@@ -25,34 +23,29 @@ class Dashboard extends Component {
           email: "",
           password: ""
         }
-    };
+  };
 
+  componentDidMount() {
+    this.searchListings("78722", "65");
+    this.renderListings("78722", "80")
 
+    // //test save listing to db functionality
+    // this.saveListing({
+    //   propertyId: "aaron",
+    //   address: "trent",
+    //   zip: "aaron",
+    //   councilDistrict: 1
+    // });
 
-    componentDidMount() {
+    // //test save new user to db functionality
+    // this.createUser({
+    //   userName: "aaron",
+    //   email: "aaron",
+    //   password: "aaron"
+    // });
 
-        //test COA search API functionality
-        this.searchListings("78722", "65");
+  };
 
-        this.renderListings("78722", "80");
-
-        // //test save listing to db functionality
-        // this.saveListing({
-        //   propertyId: "aaron",
-        //   address: "trent",
-        //   zip: "aaron",
-        //   councilDistrict: 1
-        // });
-
-        // //test save new user to db functionality
-        // this.createUser({
-        //   userName: "aaron",
-        //   email: "aaron",
-        //   password: "aaron"
-        // });
-
-       
-    }
 
   //searchListings funciton is only a test function for hitting the COA API
   searchListings(zipCode, mfiNumber) {
@@ -64,13 +57,13 @@ class Dashboard extends Component {
   //renderListings searches using user input and renders the results to the page
   renderListings(zipCode, mfiNumber) {
     API.search(zipCode, mfiNumber)
-    .then(res => this.setState({ results: res.data }))
+    .then(res => 
+      this.setState({ listings: res.data }))
     .catch(err => console.log(err))
   };
 
   //saveListing saves a particular listing to the db when user clicks save button
-  saveListing(listingData) {
-      
+  saveListing(listingData) {    
       API.saveListing(listingData)
       .then(function (result){
         console.log(result);
@@ -98,8 +91,7 @@ class Dashboard extends Component {
   //   .catch(function (err) {
   //     console.log(err)
   //   })
-  // };
-
+  // };  
 
   //handleFormSubmit calls the saveListing function and passes it the relevant data
   handleFormSubmit = (listing) => {
@@ -115,11 +107,10 @@ class Dashboard extends Component {
     })
   };
 
-
   //when logout button is clicked, delete UserId from localstorage
   logout = (event) => {
     localStorage.removeItem("UserId")
-  }
+  };
 
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
@@ -132,63 +123,53 @@ class Dashboard extends Component {
   render() {
     return (
       <div >
-        <Container fluid>
-          <Row>
-            <Col size="md-4 sm-12">
-              <Cards 
-              name="Unit Availibility"
-              description="Percentage of units currently available"
-              value="80%"
+        <CardContainer>
+          <StatCard
+          name="Unit Availibility"
+          description="Percentage of units currently available"
+          value="80%"
+          />
 
-              />
-            </Col>
-            <Col size="md-4 sm-12">
-              <Cards 
-              name="Upcoming Units"
-              description="Number of units in production"
-              value="600"
-             
-              />
-            </Col>
-            <Col size="md-4 sm-12">
-              <Cards 
-              name="Misc"
-              description="TBD"
-              value="100"
-             
-              />
-            </Col>                         
-          </Row>
-          <div style={{height: '75px', width: '100%'}}/>
-          <Row>
-            <Col size="md-12">
-              {this.state.results.length ? (
-                <TablePadded>
-                  {this.state.results.map(listing => {
-                    return (
-                      <TableItem
-                        // handleBtnClick={this.handleBtnClick}
-                        key={listing.project_id}
-                        address={listing.address}
-                        zip={listing.zip_code}
-                        councilDistrict={listing.council_district}
-                        propertyId={listing.project_id}
-                        
-                      >
-                        <AddBtn onClick={() => this.handleFormSubmit(listing)} />
-                      </TableItem>   
-                    );
-                  })};
-                </TablePadded>
-              ) : (
-                <h3>No Results to Display</h3>
-              )}
-            </Col>
-          </Row>         
-        </Container>
+          <StatCard
+          name="Upcoming Units"
+          description="Number of units in production"
+          value="600"
+          />
+
+          <StatCard
+          name="Misc"
+          description="TBD"
+          value="100"
+          />
+        </CardContainer>  
+
+        <div>
+          {this.state.listings.length ? (
+            <TablePadded>
+              {this.state.listings.map(listing => {
+                return (
+                  <TableItem
+                    listing={listing}
+                    key={listing.project_id}
+                    // unitType={listing.}
+                    // endYear={listing.}
+                    address={listing.address}
+                    zip={listing.zip_code}
+                    councilDistrict={listing.council_district}
+                    propertyId={listing.project_id}
+                    onClick={this.handleFormSubmit}
+                  >
+                  </TableItem>   
+                );
+              })};
+            </TablePadded>
+          ) : (
+            <h3>No Results to Display</h3>
+          )}
+        </div>
       </div>  
-      );
-    }
+    );
+  }
 }
 
 export default Dashboard;

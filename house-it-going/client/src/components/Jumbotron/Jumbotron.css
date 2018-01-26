@@ -1,5 +1,7 @@
 
 .jumbotron {
+	display: block;
+	box-sizing: border-box;
 	background: center;
 	background-size: 'cover';
 	clear: 'both';
@@ -11,7 +13,7 @@
     color: white;
 }
 
-.search-body {
+.jumbotron-body {
 	text-align: center;
 	max-width: 650px;
 	width: 100%;	

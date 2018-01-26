@@ -1,8 +1,15 @@
 import React, {Component} from 'react';
-// import HouseholdSize from './QuestionnaireChildren/HouseholdSize';
+// import './Questionnaire.css'
+import HouseholdSize from './QuestionnaireChildren/HouseholdSize';
 import AnnualIncome from './QuestionnaireChildren/AnnualIncome';
 import ZipCode from './QuestionnaireChildren/ZipCode';
 import API from "../../utils/API";
+import {
+  Button,
+  Grid,
+  Header,
+  Segment
+} from 'semantic-ui-react';
 
 const annualArray = [["11400","17100","22750","28500","34200","37000","39900","45600","57000","68400","79750"],
 					["13000","19550","26000","32600","39050","42300","45600","52100","65100","78150","91150"],
@@ -77,42 +84,57 @@ class Questionnaire extends Component {
  //  	};
  // findMfi () {
  // 	for (var x = 0; x < annualArray.length; x++) {
-
  // 		let mfi = annualArray[x]
-
-
  // 	}
  // }
  	
 
 	render() {
-
 		return (
-
-			<div>
-				<form>
-				<label>
-					Choose your household size:
-					<select name="householdSize" value={this.state.value} onChange={this.updateHousehold}>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3">3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-						<option value="6">6</option>
-						<option value="7">7</option>
-						<option value="8">8</option>
-					</select>
-				</label>
-
-				<AnnualIncome incomes={this.state.householdArray} onChange={this.handleFormChange}/>
-				<ZipCode />
-				<button>Submit</button>
-				</form>
-			</div>
-
+			<div>	
+			    <Segment 
+				    style={{ minHeight: 400, padding: '8em 0em' }}
+				    vertical
+			    >
+			      <Grid container stackable verticalAlign='middle'>
+			        <Grid.Row>
+			          <Grid.Column width={8}>
+			            <Header as='h3' style={{ fontSize: '2em' }}>Need Affordable Housing?</Header>
+			            <p style={{ fontSize: '1.33em' }}>
+			              Search for properties based on the required data
+			            </p>
+			          </Grid.Column>
+			          <Grid.Column floated='right' width={6}>
+						<form className='questionnaire-form'>
+							<label>
+								Choose your household size:
+								<select name="householdSize" value={this.state.value} onChange={this.updateHousehold}>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+									<option value="6">6</option>
+									<option value="7">7</option>
+									<option value="8">8</option>
+								</select>
+							</label>
+							<AnnualIncome incomes={this.state.householdArray} onChange={this.handleFormChange}/>
+							<ZipCode />
+						</form>  
+			          </Grid.Column>
+			        </Grid.Row>
+			        
+			        <Grid.Row>
+			          <Grid.Column textAlign='center'>
+			            <Button size='huge'>Check Out Your Listings</Button>
+			          </Grid.Column>
+			        </Grid.Row>
+			      </Grid>
+			    </Segment>
+			</div>          
 		);
 	};
-}
+};
 
 export default Questionnaire;

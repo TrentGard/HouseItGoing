@@ -1,8 +1,16 @@
 import React from 'react';
 import './Table.css';
-import { Table } from 'semantic-ui-react';
+import {
+  Segment,
+  Table
+} from 'semantic-ui-react';
 
 export const TablePadded = (props) => (
+  <div> 
+    <Segment 
+      style={{ minHeight: 400, padding: '8em 0em' }}
+      vertical
+    >
       <Table celled padded>
         <Table.Header>
           <Table.Row>
@@ -18,4 +26,6 @@ export const TablePadded = (props) => (
         {props.children}
         </Table.Body>
       </Table>
+    </Segment>
+  </div>    
 );
