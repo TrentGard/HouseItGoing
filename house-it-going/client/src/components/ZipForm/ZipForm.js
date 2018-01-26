@@ -6,7 +6,8 @@ class ZipForm extends Component {
 	state = {
 		userName: "",
 		password: "",
-		email: ""
+		email: "",
+		currentUserId: ""
 	};
 
 	// componentDidMount() {
@@ -31,13 +32,11 @@ class ZipForm extends Component {
 	};
 
 	createUser(userData) {
-	    API.createUser(userData)
-	    .then(function (result){
-	      console.log(result)
-	    })
-	    .catch(function (err) {
-	      console.log(err)
-	    })
+
+		API.createUser(userData)
+	    .then(res => localStorage.UserId = res.data)
+	    .catch(err => console.log(err))
+	 
   	};
 
 	render () {

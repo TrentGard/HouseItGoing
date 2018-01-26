@@ -24,7 +24,7 @@ class HomePage extends Component {
 	}
 
   searchListings(zipCode, mfi) {
-    API.search(zipCode, mfi)
+      API.search(zipCode, mfi)
       .then(function (res){
         console.log(res)
       })

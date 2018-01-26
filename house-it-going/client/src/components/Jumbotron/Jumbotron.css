@@ -10,6 +10,7 @@
 	padding-top: 50px;
 	-webkit-filter: grayscale(100%);
     filter: grayscale(20%);
+    color: white;
 }
 
 .jumbotron-body {

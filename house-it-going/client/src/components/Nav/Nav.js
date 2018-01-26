@@ -9,8 +9,6 @@ import {
   Visibility,
 } from 'semantic-ui-react';
 
-
-
 const FixedMenu = () => (
   <Menu fixed='top' size='large'>
     <Container className='fixed-menu-items'>
