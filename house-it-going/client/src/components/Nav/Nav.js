@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import "./Nav.css";
+import { Link } from "react-router-dom";
 import LoginModal from "../../components/LoginModal";
 import {
   Button,
@@ -14,10 +15,9 @@ import {
 const FixedMenu = () => (
   <Menu fixed='top' size='large'>
     <Container className='fixed-menu-items'>
-      <Menu.Item as='a' active>Home</Menu.Item>
-      <Menu.Item as='a'>Work</Menu.Item>
-      <Menu.Item as='a'>Company</Menu.Item>
-      <Menu.Item as='a'>Careers</Menu.Item>
+      <Menu.Item as={Link} to='/' active>Home</Menu.Item>
+      <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
+      <Menu.Item as={Link} to='/contact'>Contact</Menu.Item>
       <Menu.Menu position='right'>
         <Menu.Item className='item'>
           <LoginModal />
@@ -59,10 +59,9 @@ class Nav extends Component {
 
             <Container>
               <Menu inverted pointing secondary size='large'>
-                <Menu.Item as='a' active>Home</Menu.Item>
-                <Menu.Item as='a'>Work</Menu.Item>
-                <Menu.Item as='a'>Company</Menu.Item>
-                <Menu.Item as='a'>Careers</Menu.Item>
+                <Menu.Item as={Link} to='/' active>Home</Menu.Item>
+                <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
+                <Menu.Item as={Link} to='/contact'>Contact</Menu.Item>
                 <Menu.Item position='right'>
                   <LoginModal/>
                   <Button as='a' inverted style={{ marginLeft: '0.5em' }}>Logout</Button>

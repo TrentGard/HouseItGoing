@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-// import {Container} from "./components/Grid";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
-import Questionnaire from './components/Questionnaire/Questionnaire';
+import Contact from "./pages/Contact";
 
 const config = {
   issuer: 'https://dev-478651.oktapreview.com/oauth2/default',
@@ -22,7 +21,7 @@ class App extends Component {
           <div>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/questionnaire" component={Questionnaire} />
+            <Route exact path="/contact" component={Contact} />
           </div>
           <Footer /> 
         </div>   
