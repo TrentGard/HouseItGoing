@@ -42,10 +42,10 @@ class Questionnaire extends Component {
 
 		this.setState({householdNumber: event.target.value,
 						householdArray: annualArray[parseInt(event.target.value - 1)]})
+		
+
 		console.log(this.state)
 		for (var x = 0; x < this.state.householdArray.length; x++) {
-
-			
 
 			if (this.state.householdArray[x] === this.state.householdArray[0]) {
 				mfi = "20"

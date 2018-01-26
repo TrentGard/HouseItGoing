@@ -6,16 +6,11 @@ import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
 
-const config = {
-  issuer: 'https://dev-478651.oktapreview.com/oauth2/default',
-  redirect_uri: window.location.origin + '/implicit/callback',
-  client_id: '0oadmccgkao8Etxn10h7'
-}
-
 class App extends Component {
   render() {
     return (
       <Router>
+
         <div>
           <Nav />
           <div>
@@ -25,6 +20,7 @@ class App extends Component {
           </div>
           <Footer /> 
         </div>   
+
       </Router>
     );
   }

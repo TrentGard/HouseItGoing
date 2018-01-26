@@ -7,6 +7,7 @@ class ZipForm extends Component {
 		userName: "",
 		password: "",
 		email: ""
+		
 	};
 
 	// componentDidMount() {
@@ -31,14 +32,39 @@ class ZipForm extends Component {
 	};
 
 	createUser(userData) {
-	    API.createUser(userData)
-	    .then(function (result){
-	      console.log(result)
-	    })
-	    .catch(function (err) {
-	      console.log(err)
-	    })
+
+		API.createUser(userData)
+	    .then(res => localStorage.UserId = res.data)
+	    .catch(err => console.log(err))
+	 
   	};
+
+  	// login(loginData) {
+  	// 	API.login(loginData)
+  	// 	.then(res => localStorage.UserId = res.data)
+  	// 	.catch(err => console.log(err))
+  	// };
+
+  	login(loginData) {
+  		API.login(loginData)
+  		.then(function (res){
+  			localStorage.UserId = res.data
+  			window.location.href = "/dashboard"
+  		})
+  		.catch(err => console.log(err))
+  	};
+
+  	handleLogin = event => {
+  		event.preventDefault();
+
+  		this.login({
+  			userName: this.state.userName,
+  			password: this.state.password,
+  			email: this.state.email
+  		})
+  	};
+
+
 
 	render () {
 		return (
@@ -74,6 +100,13 @@ class ZipForm extends Component {
 					content='Create Account' 
 					disabled={!(this.state.userName && this.state.password && this.state.email)} 
 					onClick={this.handleLoginSubmit}
+				/>
+				<Form.Field 
+					id='Loginbutton' 
+					control={Button} 
+					content='Login' 
+					disabled={!(this.state.userName && this.state.password && this.state.email)} 
+					onClick={this.handleLogin}
 				/>
 			</Form>
 		)

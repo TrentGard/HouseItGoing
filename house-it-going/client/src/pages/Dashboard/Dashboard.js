@@ -46,6 +46,7 @@ class Dashboard extends Component {
 
   };
 
+
   //searchListings funciton is only a test function for hitting the COA API
   searchListings(zipCode, mfiNumber) {
       API.search(zipCode, mfiNumber)
@@ -53,17 +54,19 @@ class Dashboard extends Component {
       .catch(err => console.log(err));
   };
 
-  renderListings = (zipCode, mfiNumber) => {
+  //renderListings searches using user input and renders the results to the page
+  renderListings(zipCode, mfiNumber) {
     API.search(zipCode, mfiNumber)
     .then(res => 
       this.setState({ listings: res.data }))
     .catch(err => console.log(err))
   };
 
-  saveListing = (listingData) => {
-    API.saveListing(listingData)
-      .then(function (result) {
-        console.log(result)
+  //saveListing saves a particular listing to the db when user clicks save button
+  saveListing(listingData) {    
+      API.saveListing(listingData)
+      .then(function (result){
+        console.log(result);
       })
       .catch(function (err) {
         console.log(err)
@@ -90,10 +93,10 @@ class Dashboard extends Component {
   //   })
   // };  
 
+  //handleFormSubmit calls the saveListing function and passes it the relevant data
   handleFormSubmit = (listing) => {
     console.log(window.localStorage.UserId);
     console.log(listing)
-    
 
     this.saveListing({
       propertyId: listing.project_id,
@@ -107,8 +110,7 @@ class Dashboard extends Component {
   //when logout button is clicked, delete UserId from localstorage
   logout = (event) => {
     localStorage.removeItem("UserId")
-  }
-
+  };
 
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
@@ -171,6 +173,3 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
-
-
-

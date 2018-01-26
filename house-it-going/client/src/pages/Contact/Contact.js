@@ -8,6 +8,7 @@ import {
 	Segment 
 } from 'semantic-ui-react';
 
+
 class Contact extends Component {
 
 	state = {
@@ -56,39 +57,39 @@ class Contact extends Component {
 					vertical
 				>
 		            <Container>
-						<Form onSubmit={this.handleContactSubmit}>
-							<Form.Field 
-								name="firstName"
-								value={this.state.firstName} 
-								control={Input} 
-								label='First Name' 
-								placeholder='First Name' 
-								onChange={this.handleContactChange} 
-							/>		            
-							<Form.Field 
-								name="lastName"
-								value={this.state.lastName} 
-								control={Input} 
-								label='Last Name' 
-								placeholder='Last Name' 
-								onChange={this.handleContactChange} 
-							/>
-							<Form.Field 
-								name='contactMessage' 
-								value={this.state.contactMessage} 
-								control={Input} 
-								label='Message' 
-								placeholder='Message' 
-								onChange={this.handleContactChange}
-							/>
-							<Form.Field 
-								id='contactMessageButton' 
-								control={Button} 
-								content='Submit Message' 
-								disabled={!(this.state.firstName && this.state.lastName && this.state.contactMessage)} 
-								onClick={this.handleContactSubmit}
-							/>
-						</Form>	
+                  <Form onSubmit={this.handleContactSubmit}>
+                    <Form.Field 
+                      name="firstName"
+                      value={this.state.firstName} 
+                      control={Input} 
+                      label='First Name' 
+                      placeholder='First Name' 
+                      onChange={this.handleContactChange} 
+                    />		            
+                    <Form.Field 
+                      name="lastName"
+                      value={this.state.lastName} 
+                      control={Input} 
+                      label='Last Name' 
+                      placeholder='Last Name' 
+                      onChange={this.handleContactChange} 
+                    />
+                    <Form.Field 
+                      name='contactMessage' 
+                      value={this.state.contactMessage} 
+                      control={Input} 
+                      label='Message' 
+                      placeholder='Message' 
+                      onChange={this.handleContactChange}
+                    />
+                    <Form.Field 
+                      id='contactMessageButton' 
+                      control={Button} 
+                      content='Submit Message' 
+                      disabled={!(this.state.firstName && this.state.lastName && this.state.contactMessage)} 
+                      onClick={this.handleContactSubmit}
+                    />
+                  </Form>	
 		            </Container>
 		        </Segment>    		
 			</div>   
