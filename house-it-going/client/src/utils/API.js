@@ -17,6 +17,9 @@ export default {
 	},
 	findUserListings: function (UserId) {
 		return axios.get("/api/listings", UserId);
+	},
+	login: function (loginData) {
+		return axios.get("/api/users", loginData);
 	}
 };
 

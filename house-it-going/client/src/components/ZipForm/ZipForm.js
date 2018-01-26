@@ -33,11 +33,25 @@ class ZipForm extends Component {
 	};
 
 	createUser(userData) {
-
 		API.createUser(userData)
 	    .then(res => localStorage.UserId = res.data)
 	    .catch(err => console.log(err))
-	 
+  	};
+
+
+  	login(loginData) {
+  		API.login(loginData)
+  		.then(res => localStorage.UserId = res.data)
+  		.catch(err => console.log(err))
+  	};
+
+  	handleLogin = event => {
+  		event.preventDefault();
+
+  		this.login({
+  			userName: this.state.userName,
+  			password: this.state.password
+  		})
   	};
 
 	render () {
