@@ -27,33 +27,11 @@ class Dashboard extends Component {
   };
 
   componentDidMount() {
-    this.searchListings("78722", "65");
+    
     this.renderListings("78722", "80")
 
-    // //test save listing to db functionality
-    // this.saveListing({
-    //   propertyId: "aaron",
-    //   address: "trent",
-    //   zip: "aaron",
-    //   councilDistrict: 1
-    // });
-
-    // //test save new user to db functionality
-    // this.createUser({
-    //   userName: "aaron",
-    //   email: "aaron",
-    //   password: "aaron"
-    // });
-
   };
 
-
-  //searchListings funciton is only a test function for hitting the COA API
-  searchListings(zipCode, mfiNumber) {
-      API.search(zipCode, mfiNumber)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
 
   //renderListings searches using user input and renders the results to the page
   renderListings(zipCode, mfiNumber) {
@@ -74,17 +52,6 @@ class Dashboard extends Component {
       })
   };
 
-  
-
-  // createUser(userData) {
-  //   API.createUser(userData)
-  //   .then(function (result){
-  //     console.log(result)
-  //   })
-  //   .catch(function (err) {
-  //     console.log(err)
-  //   })
-  // };  
 
   //handleFormSubmit calls the saveListing function and passes it the relevant data
   handleFormSubmit = (listing) => {
@@ -96,14 +63,14 @@ class Dashboard extends Component {
       address: listing.address,
       zip: listing.zip_code,
       councilDistrict: listing.council_district,
+      unitType: listing.housing_type,
+      endYear: listing.affordability_end_year,
       UserId: localStorage.UserId
     })
   };
 
-  //when logout button is clicked, delete UserId from localstorage
-  logout = (event) => {
-    localStorage.removeItem("UserId")
-  };
+  
+  
 
 // Access data points on returned JSON from COA API 
   //res.data[x].unit_type
@@ -144,13 +111,13 @@ class Dashboard extends Component {
                   <TableItem
                     listing={listing}
                     key={listing.project_id}
-                    // unitType={listing.}
-                    // endYear={listing.}
+                    unitType={listing.housing_type}
+                    endYear={listing.affordability_end_year}
                     address={listing.address}
                     zip={listing.zip_code}
                     councilDistrict={listing.council_district}
                     propertyId={listing.project_id}
-                    // onClick={this.handleFormSubmit(listing)}
+                    
                   >
                   <AddBtn onClick={() => this.handleFormSubmit(listing)} />
                   </TableItem>   
