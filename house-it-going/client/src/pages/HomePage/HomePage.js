@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import Jumbotron from "../../components/Jumbotron";
-import Questionnaire from "../../components/Questionnaire/Questionnaire";
+import HomePageInfo from "../../components/HomePageInfo";
 
 class HomePage extends Component {
 
@@ -37,7 +37,7 @@ class HomePage extends Component {
     return (
       <div>
         <Jumbotron />
-        <Questionnaire />
+        <HomePageInfo />
       </div>              
     );
   }
