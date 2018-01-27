@@ -5,6 +5,13 @@ import API from "../../utils/API";
 import AddBtn from '../../components/AddBtn';
 import Questionnaire from "../../components/Questionnaire/Questionnaire";
 
+import {
+  Button,
+  Container,
+  Header,
+  Icon,
+  Segment
+} from 'semantic-ui-react';
 
 
 class Dashboard extends Component {
@@ -27,7 +34,6 @@ class Dashboard extends Component {
           password: ""
         }
   };
-
   
   componentDidMount() {    
     // this.renderListings(zipCode, mfiNumber)
@@ -41,6 +47,7 @@ class Dashboard extends Component {
       .then(res => console.log(res))
       .catch(err => console.log(err));
   };
+
 
   //renderListings searches using user input and renders the results to the page
   renderListings = (zipCode, mfiNumber) => {
@@ -71,6 +78,8 @@ class Dashboard extends Component {
       address: listing.address,
       zip: listing.zip_code,
       councilDistrict: listing.council_district,
+      unitType: listing.housing_type,
+      endYear: listing.affordability_end_year,
       UserId: localStorage.UserId
     })
   };
@@ -78,6 +87,7 @@ class Dashboard extends Component {
   myCallBack = (dataFromChild) => {
     // let mfiNum = dataFromChild.mfiNumber.value;
     // let mfi = mfiNum.toString();
+
 
     // let zipNum = dataFromChild.zipCode;
     // let zip = zipNum.toString();
@@ -108,6 +118,9 @@ class Dashboard extends Component {
   render() {
     return (
       <div >
+      <Segment
+      style={{ minHeight: 700, background: 'url(./img/austin3.jpg) center', backgroundSize: 'cover' }}
+      >
         <CardContainer>
           <StatCard
           name="Unit Availibility"
@@ -138,13 +151,13 @@ class Dashboard extends Component {
                   <TableItem
                     listing={listing}
                     key={listing.project_id}
-                    // unitType={listing.}
-                    // endYear={listing.}
+                    unitType={listing.housing_type}
+                    endYear={listing.affordability_end_year}
                     address={listing.address}
                     zip={listing.zip_code}
                     councilDistrict={listing.council_district}
                     propertyId={listing.project_id}
-                    // onClick={this.handleFormSubmit(listing)}
+                    
                   >
                   <AddBtn onClick={() => this.handleFormSubmit(listing)} />
                   </TableItem>   
@@ -155,6 +168,7 @@ class Dashboard extends Component {
             <h3>No Results to Display</h3>
           )}
         </div>
+        </Segment>
       </div>  
     );
   }

@@ -16,6 +16,12 @@ module.exports = function (sequelize, DataTypes) {
 		councilDistrict: {
 			type: DataTypes.INTEGER
 		},
+		unitType: {
+			type: DataTypes.STRING
+		},
+		endYear: {
+			type: DataTypes.INTEGER
+		},
 		UserId: {
 			type: DataTypes.INTEGER
 		}

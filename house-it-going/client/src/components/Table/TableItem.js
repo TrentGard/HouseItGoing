@@ -6,10 +6,10 @@ import { Table } from 'semantic-ui-react';
 export const TableItem = (props) => (
   <Table.Row>
       <Table.Cell>
-
+      {props.unitType}
       </Table.Cell>
       <Table.Cell>
-        {props.CouncilDistrict}
+        {props.endYear}
       </Table.Cell>
       <Table.Cell>
       	{props.address}
@@ -18,7 +18,7 @@ export const TableItem = (props) => (
       	{props.zip}
       </Table.Cell>
       <Table.Cell>
-        {props.propertyId}
+        {props.councilDistrict}
       </Table.Cell>
       <Table.Cell>
         {props.children}

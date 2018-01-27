@@ -16,6 +16,7 @@ const FixedMenu = () => (
       <Menu.Item as={Link} to='/' active>Home</Menu.Item>
       <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
       <Menu.Item as={Link} to='/contact'>Contact</Menu.Item>
+      <Menu.Item as={Link} to='/userprofile'>Saved Listings</Menu.Item>
       <Menu.Menu position='right'>
         <Menu.Item className='item'>
           <LoginModal />
@@ -64,6 +65,7 @@ class Nav extends Component {
                 <Menu.Item as={Link} to='/' active>Home</Menu.Item>
                 <Menu.Item as={Link} to='/dashboard'>Dashboard</Menu.Item>
                 <Menu.Item as={Link} to='/contact'>Contact</Menu.Item>
+                <Menu.Item as={Link} to='/userprofile'>Saved Listings</Menu.Item>
                 <Menu.Item position='right'>
                   <LoginModal/>
                   <Button as='a' inverted style={{ marginLeft: '0.5em' }} onClick={this.logout}>Logout</Button>

@@ -3,22 +3,28 @@ import React, { Component } from 'react';
 // import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 import {TablePadded, TableItem} from "../../components/Table/";
+import {
+  Button,
+  Container,
+  Header,
+  Icon,
+  Segment
+} from 'semantic-ui-react';
 
 class UserProfile extends Component {
 
-
-
 	state = {
 		listings: []
-	}
-
-	
+	};	
 
 	componentDidMount () {
 		console.log(localStorage.UserId)
-		const userId = localStorage.UserId
-		this.findUserListings(localStorage.UserId)
-	}
+		let UserId = localStorage.UserId
+		
+		UserId = JSON.parse(UserId)
+		console.log(UserId)
+		this.findUserListings({ UserId })
+	};
 
 	// findUserListings(UserId) {
 	//     API.findUserListings(UserId)
@@ -26,14 +32,14 @@ class UserProfile extends Component {
 	//     	this.setState({
 	//     		listings: result.data
 	//     	})
-	//       console.log(result)
+	//       console.log(this.state.listings)
 	//     })
 	//     .catch(function (err) {
 	//       console.log(err)
 	//     })
  //  	};
 
-  	findUserListings(UserId) {
+  	findUserListings = (UserId) => {
   		API.findUserListings(UserId)
   		.then(res => this.setState({ listings: res.data }))
   		.catch(err => console.log(err))
@@ -43,6 +49,9 @@ class UserProfile extends Component {
         return (
 
 	      <div>
+	      <Segment
+	      	style={{ minHeight: 700, background: 'url(./img/austin2.jpg) center', backgroundSize: 'cover' }}
+	      	>
 
 	       {/* <Container fluid>
 	          <Row>
@@ -59,14 +68,13 @@ class UserProfile extends Component {
                 return (
                   <TableItem
                     listing={listing}
-                    key={listing.project_id}
-                    // unitType={listing.}
-                    // endYear={listing.}
+                    key={listing.propertyId}
+                    unitType={listing.unitType}
+                    endYear={listing.endYear}
                     address={listing.address}
-                    zip={listing.zip_code}
-                    councilDistrict={listing.council_district}
-                    propertyId={listing.project_id}
-                    // onClick={this.handleFormSubmit}
+                    zip={listing.zip}
+                    councilDistrict={listing.councilDistrict}
+                    propertyId={listing.propertyId}
                   >
                   </TableItem>   
                 );
@@ -79,7 +87,7 @@ class UserProfile extends Component {
 	           {/* </Col>
 	          </Row>          
 	        </Container> */}
-
+	        </Segment>
 	      </div>  
     );
   }

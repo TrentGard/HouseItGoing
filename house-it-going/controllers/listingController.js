@@ -10,6 +10,8 @@ module.exports = {
 			address: req.body.address,
 			zip: req.body.zip,
 			councilDistrict: req.body.councilDistrict,
+			unitType: req.body.unitType,
+			endYear: req.body.endYear,
 			UserId: req.body.UserId
 		}).then(function(data) {
 			res.json(data);
@@ -22,6 +24,7 @@ module.exports = {
 	findAll: function (req, res) {
 		console.log("-----Listings Found!!!------" + req.body)
 
+		
 		db.SavedListing.findAll({
 			where: {
 				UserId: req.body.UserId

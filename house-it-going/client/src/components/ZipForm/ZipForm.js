@@ -31,13 +31,22 @@ class ZipForm extends Component {
 		})
 	};
 
-	createUser(userData) {
+	// createUser(userData) {
 
-		API.createUser(userData)
-	    .then(res => localStorage.UserId = res.data)
-	    .catch(err => console.log(err))
+	// 	API.createUser(userData)
+	//     .then(res => localStorage.UserId = JSON.stringify(res.data))
+	//     .catch(err => console.log(err))
 	 
-  	};
+ //  	};
+
+  	createUser(userData) {
+  		API.createUser(userData)
+  		.then(function (res) {
+  			localStorage.UserId = JSON.stringify(res.data)
+  			window.location.href = "/dashboard"
+  		})
+  		.catch(err => console.log(err))
+  	}
 
   	// login(loginData) {
   	// 	API.login(loginData)
@@ -48,7 +57,7 @@ class ZipForm extends Component {
   	login(loginData) {
   		API.login(loginData)
   		.then(function (res){
-  			localStorage.UserId = res.data
+  			localStorage.UserId = JSON.stringify(res.data)
   			window.location.href = "/dashboard"
   		})
   		.catch(err => console.log(err))
