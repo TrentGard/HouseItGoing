@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './Dashboard.css';
 import {StatCard, CardContainer} from '../../components/Card';
 import {TablePadded, TableItem} from "../../components/Table/";
 import API from "../../utils/API";
@@ -84,36 +85,36 @@ class Dashboard extends Component {
     })
   };
 
-  myCallBack = (dataFromChild) => {
-    // let mfiNum = dataFromChild.mfiNumber.value;
-    // let mfi = mfiNum.toString();
+  // myCallBack = (dataFromChild) => {
+  //   // let mfiNum = dataFromChild.mfiNumber.value;
+  //   // let mfi = mfiNum.toString();
 
 
-    // let zipNum = dataFromChild.zipCode;
-    // let zip = zipNum.toString();
+  //   // let zipNum = dataFromChild.zipCode;
+  //   // let zip = zipNum.toString();
 
-    let input = Object.values(dataFromChild)
+  //   let input = Object.values(dataFromChild)
 
-    console.log(dataFromChild)
-    console.log(input)
-    // console.log(mfiNum)
-    // console.log(mfi)
-    // console.log(zipNum)
-    // console.log(zip)
+  //   console.log(dataFromChild)
+  //   console.log(input)
+  //   // console.log(mfiNum)
+  //   // console.log(mfi)
+  //   // console.log(zipNum)
+  //   // console.log(zip)
 
-    this.setState ({
+  //   this.setState ({
 
-      searchParameters: {
-        mfi: dataFromChild.zipCode,
-        zip: dataFromChild.mfiNumber
-      }
-    })
+  //     searchParameters: {
+  //       mfi: dataFromChild.zipCode,
+  //       zip: dataFromChild.mfiNumber
+  //     }
+  //   })
 
-    // userInput.mfiNumber = dataFromChild.mfiNumber
-    // userInput.zipCode = dataFromChild.zipCode
-    this.renderListings( input ) 
-    // this.renderListings(this.state.searchParameters.zipCode, this.state.searchParameters.mfiNumber)
-  }
+  //   // userInput.mfiNumber = dataFromChild.mfiNumber
+  //   // userInput.zipCode = dataFromChild.zipCode
+  //   this.renderListings( input ) 
+  //   // this.renderListings(this.state.searchParameters.zipCode, this.state.searchParameters.mfiNumber)
+  // }
 
   render() {
     return (

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './HomePage.css';
 import API from "../../utils/API";
 import Jumbotron from "../../components/Jumbotron";
 import HomePageInfo from "../../components/HomePageInfo";
