@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './Contact.css';
 import API from "../../utils/API";
 import { 
 	Button,

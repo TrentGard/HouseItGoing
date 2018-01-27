@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './UserProfile.css';
 // import Table from "../../components/Table";
 // import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
