@@ -111,7 +111,7 @@ class Dashboard extends Component {
 
     // userInput.mfiNumber = dataFromChild.mfiNumber
     // userInput.zipCode = dataFromChild.zipCode
-    this.renderListings( input[0], input[1] ) 
+    this.renderListings( input ) 
     // this.renderListings(this.state.searchParameters.zipCode, this.state.searchParameters.mfiNumber)
   }
 
@@ -140,6 +140,7 @@ class Dashboard extends Component {
           value="100"
           />
         </CardContainer> 
+      </Segment>  
 
         <Questionnaire callBackFromParent={this.myCallBack}/> 
 
@@ -168,7 +169,6 @@ class Dashboard extends Component {
             <h3>No Results to Display</h3>
           )}
         </div>
-        </Segment>
       </div>  
     );
   }

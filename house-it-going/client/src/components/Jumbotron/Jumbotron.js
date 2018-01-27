@@ -31,10 +31,6 @@ class Jumbotron extends Component {
 		                inverted
 		                style={{ fontSize: '1.7em', fontWeight: 'normal' }}
 		              />
-		              <Button primary size='huge'>
-		                Get Started
-		                <Icon name='right arrow' />
-		              </Button>
 		            </Container>
 		        </Segment>    		
 			</div>    
