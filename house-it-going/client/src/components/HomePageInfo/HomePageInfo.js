@@ -12,6 +12,7 @@ import {
 
 class HomePageInfo extends Component {
 
+
     render() {
         return (
             <div>    
@@ -36,6 +37,7 @@ class HomePageInfo extends Component {
             </div>          
         );
     };
+
 };
 
 export default HomePageInfo;
