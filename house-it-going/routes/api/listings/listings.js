@@ -4,6 +4,9 @@ const listingController = require("../../../controllers/listingController");
 
 router.route("/")
 	.post(listingController.create)
+	
+
+router.route("/userprofile")
 	.get(listingController.findAll)
 
 

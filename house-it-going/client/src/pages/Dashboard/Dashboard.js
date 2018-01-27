@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import {StatCard, CardContainer} from '../../components/Card';
 import {TablePadded, TableItem} from "../../components/Table/";
 import API from "../../utils/API";
+import AddBtn from '../../components/AddBtn';
 
 
 class Dashboard extends Component {
@@ -73,15 +74,7 @@ class Dashboard extends Component {
       })
   };
 
-  findUserListings(UserId) {
-    API.findUserListings(UserId)
-    .then(function (result) {
-      console.log(result)
-    })
-    .catch(function (err) {
-      console.log(err)
-    })
-  };
+  
 
   // createUser(userData) {
   //   API.createUser(userData)
@@ -157,8 +150,9 @@ class Dashboard extends Component {
                     zip={listing.zip_code}
                     councilDistrict={listing.council_district}
                     propertyId={listing.project_id}
-                    onClick={this.handleFormSubmit}
+                    // onClick={this.handleFormSubmit(listing)}
                   >
+                  <AddBtn onClick={() => this.handleFormSubmit(listing)} />
                   </TableItem>   
                 );
               })};

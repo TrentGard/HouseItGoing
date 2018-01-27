@@ -16,7 +16,7 @@ export default {
 		return axios.post("/api/users", userData);
 	},
 	findUserListings: function (UserId) {
-		return axios.get("/api/listings", UserId);
+		return axios.get("/api/listings/userprofile", UserId);
 	},
 	login: function (loginData) {
 		return axios.post("/api/users/login", loginData);

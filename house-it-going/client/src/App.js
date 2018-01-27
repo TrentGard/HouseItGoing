@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import Dashboard from "./pages/Dashboard";
 import Contact from "./pages/Contact";
+import UserProfile from "./pages/UserProfile";
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
             <Route exact path="/" component={HomePage} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/contact" component={Contact} />
+            <Route exact path="/userprofile" component={UserProfile} />
           </div>
           <Footer /> 
         </div>   
