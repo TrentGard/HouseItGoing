@@ -2,18 +2,13 @@ import React, {Component} from 'react';
 
 class AnnualIncome extends Component {
 
-	constructor(props) {
-
-		super(props);
-
-	}
 
 	renderOptions(){
 
 			var arrayOfOptions = this.props.incomes.map((incomeData) => {
-					return(
-						<option key={incomeData} value={incomeData}>{incomeData}</option>
-						)
+				return(
+					<option key={incomeData} value={incomeData}>{incomeData}</option>
+				)
 			})
 
 			return arrayOfOptions;

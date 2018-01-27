@@ -13,13 +13,9 @@ import {
 
 class UserProfile extends Component {
 
-
-
 	state = {
 		listings: []
-	};
-
-	
+	};	
 
 	componentDidMount () {
 		console.log(localStorage.UserId)
@@ -42,8 +38,6 @@ class UserProfile extends Component {
 	//       console.log(err)
 	//     })
  //  	};
-
-
 
   	findUserListings = (UserId) => {
   		API.findUserListings(UserId)

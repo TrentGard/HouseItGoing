@@ -17,7 +17,7 @@ class HouseholdSize extends Component {
 			Choose your household size:
 
 
-				<select name="householdSize" value={this.props.value} onChange={this.props.handleInputChange}>
+				<select name="householdSize">
 
 					<option value="1">1</option>
 					<option value="2">2</option>

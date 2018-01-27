@@ -73,8 +73,6 @@ class ZipForm extends Component {
   		})
   	};
 
-
-
 	render () {
 		return (
 			<Form onSubmit={this.handleLoginSubmit}>
