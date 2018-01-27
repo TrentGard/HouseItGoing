@@ -10,6 +10,9 @@ import {
   Header,
   Segment
 } from 'semantic-ui-react';
+import {TablePadded, TableItem} from "../../components/Table/";
+
+import AddBtn from '../../components/AddBtn';
 
 const annualIncomeAmount = [
 	["11400","17100","22750","28500","34200","37000","39900","45600","57000","68400","79750"],
@@ -24,10 +27,7 @@ const annualIncomeAmount = [
 
 let mfiNumber = "";	
 
-let userInput = {
-	mfiNumber: "",
-	zipCode: ""
-}			
+let zipCode = "";	
 
 class Questionnaire extends Component {
 
@@ -35,7 +35,8 @@ class Questionnaire extends Component {
 			annualIncome: "",
 			householdNumber: "1",
 			zipCode: "78610",
-			householdArray: annualIncomeAmount[0],	
+			householdArray: annualIncomeAmount[0],
+			listings: []	
 		}
 	
 	componentDidMount () {
@@ -88,21 +89,21 @@ class Questionnaire extends Component {
 		console.log(indexOfMfiArray);
 
 		if ( indexOfMfiArray === 0 ) {
-			userInput.mfiNumber = "20"
+			mfiNumber = "20"
 		} else if ( indexOfMfiArray === 1 ) {
-			userInput.mfiNumber = "30"
+			mfiNumber = "30"
 		} else if ( indexOfMfiArray === 2 ) {
-			userInput.mfiNumber = "40"
+			mfiNumber = "40"
 		} else if ( indexOfMfiArray === 3 ) {
-			userInput.mfiNumber = "50"
+			mfiNumber = "50"
 		} else if ( indexOfMfiArray === 4 ) {
-			userInput.mfiNumber = "60"
+			mfiNumber = "60"
 		} else if ( indexOfMfiArray === 5 ) {
-			userInput.mfiNumber = "70"
+			mfiNumber = "70"
 		} else if ( indexOfMfiArray === 6 ) {
-			userInput.mfiNumber = "80"
+			mfiNumber = "80"
 		} else if ( indexOfMfiArray === 7 ) {
-			userInput.mfiNumber = "90"
+			mfiNumber = "90"
 		} else {
 			console.log("Sorry, you do not qualify for affordable housing with the City of Austin")
 		}	
@@ -114,17 +115,60 @@ class Questionnaire extends Component {
 		// console.log(this.state);
 		// console.log(mfiNumber);
 		
-		userInput.zipCode = this.state.zipCode;
+		zipCode = this.state.zipCode;
 		this.findMfi();
 
-		this.someFn();
+		console.log(JSON.stringify(mfiNumber))
+		console.log(JSON.stringify(zipCode))
+
+
+
+		this.renderListings( zipCode, mfiNumber )
+
+
+
+		// this.someFn();
 	}
 
 	//Send data to parent
-	someFn = () => {
+	// someFn = () => {
 
-		this.props.callBackFromParent(userInput)
-	}
+	// 	this.props.callBackFromParent()
+	// }
+
+	renderListings = (zipCode, mfiNumber) => {
+    API.search(zipCode, mfiNumber)
+    .then(res => 
+      this.setState({ listings: res.data }))
+    .catch(err => console.log(err))
+  	};
+
+  	//saveListing saves a particular listing to the db when user clicks save button
+  saveListing(listingData) {    
+      API.saveListing(listingData)
+      .then(function (result){
+        console.log(result);
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
+  }; 
+
+  //handleFormSubmit calls the saveListing function and passes it the relevant data
+  handleFormSubmit = (listing) => {
+    console.log(window.localStorage.UserId);
+    console.log(listing)
+
+    this.saveListing({
+      propertyId: listing.project_id,
+      address: listing.address,
+      zip: listing.zip_code,
+      councilDistrict: listing.council_district,
+      unitType: listing.housing_type,
+      endYear: listing.affordability_end_year,
+      UserId: localStorage.UserId
+    })
+  };
  	
 
 	render() {
@@ -243,6 +287,31 @@ class Questionnaire extends Component {
 			          </Grid.Column>
 			        </Grid.Row>
 			      </Grid>
+			      <div>
+          {this.state.listings.length ? (
+            <TablePadded>
+              {this.state.listings.map(listing => {
+                return (
+                  <TableItem
+                    listing={listing}
+                    key={listing.project_id}
+                    unitType={listing.housing_type}
+                    endYear={listing.affordability_end_year}
+                    address={listing.address}
+                    zip={listing.zip_code}
+                    councilDistrict={listing.council_district}
+                    propertyId={listing.project_id}
+                    
+                  >
+                  <AddBtn onClick={() => this.handleFormSubmit(listing)} />
+                  </TableItem>   
+                );
+              })};
+            </TablePadded>
+          ) : (
+            <h3>No Results to Display</h3>
+          )}
+        </div>
 			    </Segment>
 			</div>          
 		);

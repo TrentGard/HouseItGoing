@@ -35,6 +35,8 @@ class Nav extends Component {
 
   logout = (event) => {
     localStorage.removeItem("UserId")
+
+
   };
 
   hideFixedMenu = () => this.setState({ visible: false })
@@ -68,7 +70,7 @@ class Nav extends Component {
                 <Menu.Item as={Link} to='/userprofile'>Saved Listings</Menu.Item>
                 <Menu.Item position='right'>
                   <LoginModal/>
-                  <Button as='a' inverted style={{ marginLeft: '0.5em' }} onClick={this.logout}>Logout</Button>
+                  <Button as={Link} to='/' inverted style={{ marginLeft: '0.5em' }} onClick={this.logout}>Logout</Button>
                 </Menu.Item>
               </Menu>
             </Container>

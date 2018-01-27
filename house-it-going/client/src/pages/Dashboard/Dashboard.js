@@ -142,33 +142,33 @@ class Dashboard extends Component {
         </CardContainer> 
       </Segment>  
 
-        <Questionnaire callBackFromParent={this.myCallBack}/> 
+        <Questionnaire /> 
 
-        <div>
-          {this.state.listings.length ? (
-            <TablePadded>
-              {this.state.listings.map(listing => {
-                return (
-                  <TableItem
-                    listing={listing}
-                    key={listing.project_id}
-                    unitType={listing.housing_type}
-                    endYear={listing.affordability_end_year}
-                    address={listing.address}
-                    zip={listing.zip_code}
-                    councilDistrict={listing.council_district}
-                    propertyId={listing.project_id}
+        {/*// <div>
+        //   {this.state.listings.length ? (
+        //     <TablePadded>
+        //       {this.state.listings.map(listing => 
+        //         return (
+        //           <TableItem
+        //             listing={listing}
+        //             key={listing.project_id}
+        //             unitType={listing.housing_type}
+        //             endYear={listing.affordability_end_year}
+        //             address={listing.address}
+        //             zip={listing.zip_code}
+        //             councilDistrict={listing.council_district}
+        //             propertyId={listing.project_id}
                     
-                  >
-                  <AddBtn onClick={() => this.handleFormSubmit(listing)} />
-                  </TableItem>   
-                );
-              })};
-            </TablePadded>
-          ) : (
-            <h3>No Results to Display</h3>
-          )}
-        </div>
+        //           >
+        //           <AddBtn onClick={() => this.handleFormSubmit(listing)} />
+        //           </TableItem>   
+        //         );
+        //       })};
+        //     </TablePadded>
+        //   ) : (
+        //     <h3>No Results to Display</h3>
+        //   )}
+        // </div>*/}
       </div>  
     );
   }
