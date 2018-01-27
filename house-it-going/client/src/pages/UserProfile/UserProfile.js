@@ -20,24 +20,24 @@ class UserProfile extends Component {
 		this.findUserListings(localStorage.UserId)
 	}
 
-	findUserListings(UserId) {
-	    API.findUserListings(UserId)
-	    .then(function (result) {
-	    	this.setState({
-	    		listings: result.data
-	    	})
-	      console.log(result)
-	    })
-	    .catch(function (err) {
-	      console.log(err)
-	    })
-  	};
+	// findUserListings(UserId) {
+	//     API.findUserListings(UserId)
+	//     .then(function (result) {
+	//     	this.setState({
+	//     		listings: result.data
+	//     	})
+	//       console.log(result)
+	//     })
+	//     .catch(function (err) {
+	//       console.log(err)
+	//     })
+ //  	};
 
-  	// findUserListings(UserId) {
-  	// 	API.findUserListings(UserId)
-  	// 	.then(res => this.setState({ listings: res.data }))
-  	// 	.catch(err => console.log(err))
-  	// };
+  	findUserListings(UserId) {
+  		API.findUserListings(UserId)
+  		.then(res => this.setState({ listings: res.data }))
+  		.catch(err => console.log(err))
+  	};
 
     render() {
         return (

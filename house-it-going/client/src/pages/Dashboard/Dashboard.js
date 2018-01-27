@@ -3,6 +3,8 @@ import {StatCard, CardContainer} from '../../components/Card';
 import {TablePadded, TableItem} from "../../components/Table/";
 import API from "../../utils/API";
 import AddBtn from '../../components/AddBtn';
+import Questionnaire from "../../components/Questionnaire/Questionnaire";
+
 
 
 class Dashboard extends Component {
@@ -26,27 +28,12 @@ class Dashboard extends Component {
         }
   };
 
-  componentDidMount() {
-    this.searchListings("78722", "65");
-    this.renderListings("78722", "80")
+  
+  componentDidMount() {    
+    // this.renderListings(zipCode, mfiNumber)
 
-    // //test save listing to db functionality
-    // this.saveListing({
-    //   propertyId: "aaron",
-    //   address: "trent",
-    //   zip: "aaron",
-    //   councilDistrict: 1
-    // });
-
-    // //test save new user to db functionality
-    // this.createUser({
-    //   userName: "aaron",
-    //   email: "aaron",
-    //   password: "aaron"
-    // });
-
+    // this.myCallBack()
   };
-
 
   //searchListings funciton is only a test function for hitting the COA API
   searchListings(zipCode, mfiNumber) {
@@ -56,7 +43,7 @@ class Dashboard extends Component {
   };
 
   //renderListings searches using user input and renders the results to the page
-  renderListings(zipCode, mfiNumber) {
+  renderListings = (zipCode, mfiNumber) => {
     API.search(zipCode, mfiNumber)
     .then(res => 
       this.setState({ listings: res.data }))
@@ -72,19 +59,7 @@ class Dashboard extends Component {
       .catch(function (err) {
         console.log(err)
       })
-  };
-
-  
-
-  // createUser(userData) {
-  //   API.createUser(userData)
-  //   .then(function (result){
-  //     console.log(result)
-  //   })
-  //   .catch(function (err) {
-  //     console.log(err)
-  //   })
-  // };  
+  }; 
 
   //handleFormSubmit calls the saveListing function and passes it the relevant data
   handleFormSubmit = (listing) => {
@@ -100,18 +75,35 @@ class Dashboard extends Component {
     })
   };
 
-  //when logout button is clicked, delete UserId from localstorage
-  logout = (event) => {
-    localStorage.removeItem("UserId")
-  };
+  myCallBack = (dataFromChild) => {
+    // let mfiNum = dataFromChild.mfiNumber.value;
+    // let mfi = mfiNum.toString();
 
-// Access data points on returned JSON from COA API 
-  //res.data[x].unit_type
-  //res.data[x].affordability_end_year
-  //res.data[x].location_address
-  //res.data[x].location_zip
-  //res.data[x].housing_type
-  //res.data[x].total_affordable_units
+    // let zipNum = dataFromChild.zipCode;
+    // let zip = zipNum.toString();
+
+    let input = Object.values(dataFromChild)
+
+    console.log(dataFromChild)
+    console.log(input)
+    // console.log(mfiNum)
+    // console.log(mfi)
+    // console.log(zipNum)
+    // console.log(zip)
+
+    this.setState ({
+
+      searchParameters: {
+        mfi: dataFromChild.zipCode,
+        zip: dataFromChild.mfiNumber
+      }
+    })
+
+    // userInput.mfiNumber = dataFromChild.mfiNumber
+    // userInput.zipCode = dataFromChild.zipCode
+    this.renderListings( input[0], input[1] ) 
+    // this.renderListings(this.state.searchParameters.zipCode, this.state.searchParameters.mfiNumber)
+  }
 
   render() {
     return (
@@ -134,7 +126,9 @@ class Dashboard extends Component {
           description="TBD"
           value="100"
           />
-        </CardContainer>  
+        </CardContainer> 
+
+        <Questionnaire callBackFromParent={this.myCallBack}/> 
 
         <div>
           {this.state.listings.length ? (
@@ -167,3 +161,11 @@ class Dashboard extends Component {
 }
 
 export default Dashboard;
+
+// Access data points on returned JSON from COA API 
+  //res.data[x].unit_type
+  //res.data[x].affordability_end_year
+  //res.data[x].location_address
+  //res.data[x].location_zip
+  //res.data[x].housing_type
+  //res.data[x].total_affordable_units
