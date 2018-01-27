@@ -3,6 +3,13 @@ import {StatCard, CardContainer} from '../../components/Card';
 import {TablePadded, TableItem} from "../../components/Table/";
 import API from "../../utils/API";
 import AddBtn from '../../components/AddBtn';
+import {
+  Button,
+  Container,
+  Header,
+  Icon,
+  Segment
+} from 'semantic-ui-react';
 
 
 class Dashboard extends Component {
@@ -83,6 +90,9 @@ class Dashboard extends Component {
   render() {
     return (
       <div >
+      <Segment
+      style={{ minHeight: 700, background: 'url(./img/austin3.jpg) center', backgroundSize: 'cover' }}
+      >
         <CardContainer>
           <StatCard
           name="Unit Availibility"
@@ -128,6 +138,7 @@ class Dashboard extends Component {
             <h3>No Results to Display</h3>
           )}
         </div>
+        </Segment>
       </div>  
     );
   }
