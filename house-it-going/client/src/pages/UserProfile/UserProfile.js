@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 // import { Col, Row, Container } from "../../components/Grid";
 import API from "../../utils/API";
 import {TablePadded, TableItem} from "../../components/Table/";
+import {
+  Button,
+  Container,
+  Header,
+  Icon,
+  Segment
+} from 'semantic-ui-react';
 
 class UserProfile extends Component {
 
@@ -48,6 +55,9 @@ class UserProfile extends Component {
         return (
 
 	      <div>
+	      <Segment
+	      	style={{ minHeight: 700, background: 'url(./img/austin2.jpg) center', backgroundSize: 'cover' }}
+	      	>
 
 	       {/* <Container fluid>
 	          <Row>
@@ -83,7 +93,7 @@ class UserProfile extends Component {
 	           {/* </Col>
 	          </Row>          
 	        </Container> */}
-
+	        </Segment>
 	      </div>  
     );
   }
