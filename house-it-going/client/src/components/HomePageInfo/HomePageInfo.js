@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import API from "../../utils/API";
 import {
   Button,
+  Container,
   Grid,
   Header,
   Segment
@@ -18,22 +19,19 @@ class HomePageInfo extends Component {
 				    style={{ minHeight: 400, padding: '8em 0em' }}
 				    vertical
 			    >
-			      <Grid container stackable verticalAlign='middle'>
-			        <Grid.Row>
-			          <Grid.Column width={14}>
-			            <Header as='h3' style={{ fontSize: '2em' }}>Need Affordable Housing?</Header>
-			            <p style={{ fontSize: '1.33em' }}>
-			              Search for properties based on the required data
-			            </p>
-			          </Grid.Column>
-			        </Grid.Row>
-			        
-			        <Grid.Row>
-			          <Grid.Column textAlign='center'>
-			            <Button size='huge' as={Link} to='/dashboard'>Get Started!</Button>
-			          </Grid.Column>
-			        </Grid.Row>
-			      </Grid>
+					<Container text>
+			            <Header 
+			            	as='h2' 
+			            	content="Need Affordable Housing?" 
+			            	style={{ fontSize: '2em', textAlign: 'center' }} />
+			            <Header
+			                as='h3'
+			                content='Search for properties based on the required data'
+			                style={{ fontSize: '1.7em', fontWeight: 'normal', textAlign: 'center' }}
+		              	/>	
+				        <Button style={{ marginLeft: 250,textAlign: 'center' }} size='huge' as={Link} to='/dashboard'>Get Started!</Button>
+						
+					</Container>
 			    </Segment>
 			</div>          
 		);
