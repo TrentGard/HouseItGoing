@@ -13,11 +13,14 @@ const annualArray = [["11400","17100","22750","28500","34200","37000","39900","4
 					["21500","41320","42900","53750","64500","69850","75250","85950","107450","128950","150400"]];
 
 class Questionnaire extends Component {
+
 	constructor(props){
 		super(props);
 		this.state = {
-		householdNumber: "",
-		householdArray: annualArray[0]
+		householdNumber: "1",
+		householdArray: annualArray[0],
+		selectedIncome: annualArray[0][0],
+		selectedZipCode: "78610"
 		}
 
 		this.updateHousehold = this.updateHousehold.bind(this);
@@ -27,7 +30,16 @@ class Questionnaire extends Component {
 	updateHousehold(event){
 
 		this.setState({householdNumber: event.target.value,
-						householdArray: annualArray[parseInt(event.target.value - 1)]})
+						householdArray: annualArray[parseInt(event.target.value - 1)],
+						selectedIncome: annualArray[parseInt(event.target.value - 1)][0]
+					})
+	}
+
+	handleSubmit() {
+
+		console.log(this.state.selectedIncome, this.state.selectedZipCode, this.state.householdNumber);
+		nameOfTheFunctionThatSendsTheDataToTheAPI(this.state.selectedIncome, this.state.selectedZipCode, this.state.householdNumber);
+
 	}
 
 	render() {
@@ -41,7 +53,7 @@ class Questionnaire extends Component {
 					Choose your household size:
 
 
-					<select name="householdSize" onChange={this.updateHousehold}>
+					<select value={this.state.selectValue} name="householdSize" onChange={this.updateHousehold}>
 
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -55,8 +67,19 @@ class Questionnaire extends Component {
 					</select>
 
 				</label>
-				<AnnualIncome incomes={this.state.householdArray}/>
-				<ZipCode />
+				<AnnualIncome 
+					incomes={this.state.householdArray} 
+					selectedIncome={this.state.selectedIncome}
+					handleIncomeChange={newValue => this.setState({selectedIncome: newValue})}
+				/>
+				<ZipCode 
+
+					selectedZipCode={this.state.selectedZipCode}
+					handleZipCodeChange={newValue => this.setState({selectedZipCode: newValue})}
+
+				/>
+
+				<button onClick={() => this.handleSubmit()} id="questionSubmit">Submit</button>
 
 			</div>
 

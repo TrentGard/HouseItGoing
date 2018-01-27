@@ -8,6 +8,12 @@ class ZipCode extends Component {
 
 	}
 
+	handleZipCodeChange(event) {
+
+		this.props.handleZipCodeChange(event.target.value);
+
+	}
+
 	render() {
 
 		return (
@@ -16,7 +22,7 @@ class ZipCode extends Component {
 			
 			Choose your zip code:
 
-				<select name="householdSize" value={this.props.value} onChange={this.props.handleInputChange}>
+				<select value={this.props.selectedZipCode || "78610"} onChange={ (event) => this.handleZipCodeChange(event) }>
 
 					<option value="78610">78610</option>
 					<option value="78613">78613</option>

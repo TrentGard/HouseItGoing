@@ -19,6 +19,14 @@ class AnnualIncome extends Component {
 			return arrayOfOptions;
 	}
 
+	handleIncomeChange (event) {
+
+		console.log(event.target.value);
+
+		this.props.handleIncomeChange(event.target.value);
+
+	}
+
 	render() {
 
 		return (
@@ -28,7 +36,11 @@ class AnnualIncome extends Component {
 			Choose your annual income:
 
 
-				<select name="annualIncome">
+				<select
+					value={this.props.selectedIncome || this.props.incomes[0]} 
+					name="annualIncome"
+					onChange={(event) => this.handleIncomeChange(event)}
+					>
 
 				{this.renderOptions()}
 
