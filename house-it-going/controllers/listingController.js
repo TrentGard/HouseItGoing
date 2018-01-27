@@ -24,6 +24,7 @@ module.exports = {
 	findAll: function (req, res) {
 		console.log("-----Listings Found!!!------" + req.body)
 
+		
 		db.SavedListing.findAll({
 			where: {
 				UserId: req.body.UserId

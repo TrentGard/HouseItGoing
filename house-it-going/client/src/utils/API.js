@@ -5,6 +5,7 @@ const mfiPart1 = "&$where=units_"
 const mfiPart2 = "_mfi>0 AND affordability_end_year>2019"
 
 
+
 export default {
 	search: function (zipCode, mfiNumber) {
 		return axios.get(BASEURL + zipCode + mfiPart1 + mfiNumber + mfiPart2 + APIKEY);
@@ -16,7 +17,7 @@ export default {
 		return axios.post("/api/users", userData);
 	},
 	findUserListings: function (UserId) {
-		return axios.get("/api/listings/userprofile", UserId);
+		return axios.post("/api/listings/userprofile", UserId);
 	},
 	login: function (loginData) {
 		return axios.post("/api/users/login", loginData);
