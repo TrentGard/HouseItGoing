@@ -10,6 +10,7 @@ import {
   Icon,
   Segment
 } from 'semantic-ui-react';
+import Questionnaire from "../../components/Questionnaire/Questionnaire";
 
 
 class Dashboard extends Component {
@@ -70,7 +71,7 @@ class Dashboard extends Component {
       address: listing.address,
       zip: listing.zip_code,
       councilDistrict: listing.council_district,
-      unitType: listing.housing_type,
+      unitType: listing.unit_type,
       endYear: listing.affordability_end_year,
       UserId: localStorage.UserId
     })
@@ -112,7 +113,7 @@ class Dashboard extends Component {
           value="100"
           />
         </CardContainer>  
-
+        <Questionnaire/>
         <div>
           {this.state.listings.length ? (
             <TablePadded>
@@ -121,7 +122,7 @@ class Dashboard extends Component {
                   <TableItem
                     listing={listing}
                     key={listing.project_id}
-                    unitType={listing.housing_type}
+                    unitType={listing.unit_type}
                     endYear={listing.affordability_end_year}
                     address={listing.address}
                     zip={listing.zip_code}

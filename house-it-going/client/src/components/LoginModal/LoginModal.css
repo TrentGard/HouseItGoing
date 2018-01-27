@@ -1,0 +1,13 @@
+.content {
+        /*border: 0;*/
+        /*bottom: auto;*/
+        /*left: 50%;
+        padding: 2px;
+        right: auto;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 80%;*/
+        position: fixed;
+        
+      }
+

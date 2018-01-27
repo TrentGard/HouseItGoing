@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ZipForm from '../../components/ZipForm';
+// import './Questionnaire.css'
 
 import { 
   Button, 
@@ -16,7 +17,8 @@ class LoginModal extends Component {
     const { open, size } = this.state
 
     return (
-      <div>
+
+      <div >
         <Button onClick={this.show('tiny')}>Login</Button>
 
         <Modal size={size} open={open} onClose={this.close}>
@@ -31,6 +33,7 @@ class LoginModal extends Component {
           </Modal.Actions>
         </Modal>
       </div>
+
     )
   }
 }

@@ -77,6 +77,7 @@ class ZipForm extends Component {
 
 	render () {
 		return (
+			<div>
 			<Form onSubmit={this.handleLoginSubmit}>
 				<Form.Field 
 					name='userName' 
@@ -118,6 +119,7 @@ class ZipForm extends Component {
 					onClick={this.handleLogin}
 				/>
 			</Form>
+			</div>
 		)
 	};
 };
