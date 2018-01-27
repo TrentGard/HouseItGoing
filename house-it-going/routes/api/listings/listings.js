@@ -7,7 +7,7 @@ router.route("/")
 	
 
 router.route("/userprofile")
-	.get(listingController.findAll)
+	.post(listingController.findAll)
 
 
 module.exports = router;

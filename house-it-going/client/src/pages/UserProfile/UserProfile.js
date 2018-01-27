@@ -20,7 +20,7 @@ class UserProfile extends Component {
 		
 		UserId = JSON.parse(UserId)
 		console.log(UserId)
-		this.findUserListings(UserId)
+		this.findUserListings({ UserId })
 	};
 
 	// findUserListings(UserId) {
@@ -38,7 +38,7 @@ class UserProfile extends Component {
 
 
 
-  	findUserListings(UserId) {
+  	findUserListings = (UserId) => {
   		API.findUserListings(UserId)
   		.then(res => this.setState({ listings: res.data }))
   		.catch(err => console.log(err))
@@ -64,13 +64,13 @@ class UserProfile extends Component {
                 return (
                   <TableItem
                     listing={listing}
-                    key={listing.project_id}
-                    unitType={listing.housing_type}
-                    endYear={listing.affordability_end_year}
+                    key={listing.propertyId}
+                    unitType={listing.unitType}
+                    endYear={listing.endYear}
                     address={listing.address}
-                    zip={listing.zip_code}
-                    councilDistrict={listing.council_district}
-                    propertyId={listing.project_id}
+                    zip={listing.zip}
+                    councilDistrict={listing.councilDistrict}
+                    propertyId={listing.propertyId}
                   >
                   </TableItem>   
                 );
