@@ -9,7 +9,7 @@
     "mysql": "^2.15.0",
     "mysql2": "^1.5.1",
     "path": "^0.12.7",
-    "sequelize": "^4.31.2"
+    "sequelize": "^5.15.1"
   },
   "scripts": {
     "server": "node server"
